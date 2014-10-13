@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--Samantha Holloway Senior Project Oct 2014-->
+<html>
+<head lang="en">
+  <link rel="stylesheet" type="text/css" href="Main.css" />
+  <link rel="stylesheet" type="text/css" href="creation.css" />
+  <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+  <script src="creation.js"></script>
+  <meta charset="UTF-8">
+  <title>Character Creation</title>
+</head>
+<body>
+<img src="Headline.jpg" class="WebsiteName" alt="Logo">
+
+<h2>Create Your Character!</h2>
+
+<h2>To start off, choose a name for your character.</h2>
+<label id ="name" for="characterName">Name</label>
+<input type="text" name="characterName" id="characterName">
+
+<h2>Now, choose your color</h2>
+<label for="purple">Purple</label>
+<input type="radio" name="Color" id="purple" checked="true" onclick="pictureChange('purplePicButterfly')"><br>
+<label for="red">Red</label>
+<input type="radio" name="Color" id="red" onclick="pictureChange('redPicButterfly')"><br>
+<label for="black">Black</label>
+<input type="radio" name="Color" id="black" onclick="pictureChange('blackPicButterfly')"><br>
+<img src="transparent.png" class="butterfly" id="purplePicButterfly" alt="Butterfly"/>
+<!--Sprite sheet used to switch in and out Butterfly Images-->
+
+
+<h2>You get to pick 3 special abilities, 1 from each category.</h2>
+<h2>Defensive Ability</h2>
+<label for="Heal">Heal</label>
+<input type="radio" name="Defense" id="Heal" checked="true" onclick="changeToolTip('HealText', '.DefenseToolTip')"><br>
+<label for="Block">Block</label>
+<input type="radio" name="Defense" id="Block" onclick="changeToolTip('BlockText', '.DefenseToolTip')"><br>
+<label for="Sleep">Sleep</label>
+<input type="radio" name="Defense" id="Sleep" onclick="changeToolTip('SleepText', '.DefenseToolTip')"><br>
+<span class="DefenseToolTip" id="HealText">Heal will allow you to heal your character for a medium amount.</span>
+    <span class="DefenseToolTip" id="BlockText">Block will allow you to block a medium or less attack, and
+    slightly reduce a heavy attack</span>
+    <span class="DefenseToolTip" id="SleepText">Sleep will allow you to heal for a large amount, but you
+    lose your next turn.</span>
+
+
+<h2>Offensive Ability</h2>
+<label for="Dive">Dive</label>
+<input type="radio" name="Offense" id="Dive" checked="true" onclick="changeToolTip('DiveText', '.OffenseToolTip')"><br>
+<label for="Pummel">Pummel</label>
+<input type="radio" name="Offense" id="Pummel" onclick="changeToolTip('PummelText', '.OffenseToolTip')"><br>
+<label for="Poke">Poke</label>
+<input type="radio" name="Offense" id="Poke" onclick="changeToolTip('PokeText', '.OffenseToolTip')"><br>
+    <span class="OffenseToolTip" id="DiveText">Dive lets you fly into the air and then smash into your opponent
+    for a large amount of damage, but you take a small amount of damage as well.</span>
+    <span class="OffenseToolTip" id="PummelText">You pummel the enemy with your wings, dealing a medium amount
+    of damage.</span>
+    <span class="OffenseToolTip" id="PokeText">You poke your enemy in the eye with your antennae
+    dealing a small amount of damage, they attack second next turn to recover. Ew.</span>
+
+<h2>Wild Ability</h2>
+<label for="Dazzle">Dazzle</label>
+<input type="radio" name="Wild" id="Dazzle" checked="true" onclick="changeToolTip('DazzleText', '.WildToolTip')"><br>
+<label for="Whoosh">Whoosh</label>
+<input type="radio" name="Wild" id="Whoosh" onclick="changeToolTip('WhooshText', '.WildToolTip')"><br>
+<label for="Innocence">Innocence</label>
+<input type="radio" name="Wild" id="Innocence" onclick="changeToolTip('InnocenceText', '.WildToolTip')"><br>
+    <span class="WildToolTip" id="DazzleText">You dazzle the enemy with your beautiful wings, they attack
+    second for the next two turns.</span>
+    <span class="WildToolTip" id="WhooshText">You fly wildly around your enemy, they may hit themselves
+    the next turn.</span>
+    <span class="WildToolTip" id="InnocenceText">You sit innocently in front of your enemy, they
+    may feel too bad to hit you next turn.</span>
+
+
+<h2>Now for your character's stats. You get 5 points extra in one of these.</h2>
+<label for="strength">Strength</label>
+<input type="radio" name="Stats" id="strength" checked="true" onclick="pictureChange('purplePicButterfly')"><br>
+<label for="defense">Defense</label>
+<input type="radio" name="Stats" id="defense"><br>
+<label for="speed">Speed</label>
+<input type="radio" name="Stats" id="speed"><br>
+<label for="stamina">Stamina</label>
+<input type="radio" name="Stats" id="stamina"><br>
+
+
+<h2>Check over your selections, they are permanent once you continue.</h2>
+<button id="submit" onclick="submitData()">Submit</button>
+
+<a href="#name" id="Backtotop">Back to Top</a>
+
+</body>
+</html>
