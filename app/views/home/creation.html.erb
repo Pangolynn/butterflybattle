@@ -2,15 +2,15 @@
 <!--Samantha Holloway Senior Project Oct 2014-->
 <html>
 <head lang="en">
-  <link rel="stylesheet" type="text/css" href="Main.css" />
-  <link rel="stylesheet" type="text/css" href="creation.css" />
-  <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+  <%= stylesheet_link_tag "creation.css" %>
+  <%= stylesheet_link_tag "Main.css" %>
+ <%= javascript_include_tag "creation.js" %>
   <script src="creation.js"></script>
   <meta charset="UTF-8">
   <title>Character Creation</title>
 </head>
 <body>
-<img src="Headline.jpg" class="WebsiteName" alt="Logo">
+<%= image_tag("Headline.jpg", :class => 'WebsiteName', :alt => 'Logo') %>
 
 <h2>Create Your Character!</h2>
 
@@ -25,8 +25,10 @@
 <input type="radio" name="Color" id="red" onclick="pictureChange('redPicButterfly')"><br>
 <label for="black">Black</label>
 <input type="radio" name="Color" id="black" onclick="pictureChange('blackPicButterfly')"><br>
-<img src="transparent.png" class="butterfly" id="purplePicButterfly" alt="Butterfly"/>
-<!--Sprite sheet used to switch in and out Butterfly Images-->
+<%= image_tag("transparent.png", :class => 'butterfly', :id => 'purplePicButterfly', :alt => 'Butterfly') %>
+<!--<img src="transparent.png" class="butterfly" id="purplePicButterfly" alt="Butterfly"/>-->
+<!-- Transparent image used to place behind a Sprite sheet
+ that is used to switch in and out Butterfly Images-->
 
 
 <h2>You get to pick 3 special abilities, 1 from each category.</h2>
