@@ -15,10 +15,16 @@
 <h2>Create Your Character!</h2>
 
 <h2>To start off, choose a name for your character.</h2>
+<fieldset>
+<div id="namefield" >
 <label id ="name" for="characterName">Name</label>
 <input type="text" name="characterName" id="characterName">
+</div>
+</fieldset>
 
 <h2>Now, choose your color</h2>
+<fieldset>
+<div id="colorPicker">
 <label for="purple">Purple</label>
 <input type="radio" name="Color" id="purple" checked="true" onclick="pictureChange('purplePicButterfly')"><br>
 <label for="red">Red</label>
@@ -26,12 +32,16 @@
 <label for="black">Black</label>
 <input type="radio" name="Color" id="black" onclick="pictureChange('blackPicButterfly')"><br>
 <%= image_tag("transparent.png", :class => 'butterfly', :id => 'purplePicButterfly', :alt => 'Butterfly') %>
+  </div>
+</fieldset>
 <!--<img src="transparent.png" class="butterfly" id="purplePicButterfly" alt="Butterfly"/>-->
 <!-- Transparent image used to place behind a Sprite sheet
  that is used to switch in and out Butterfly Images-->
 
 
 <h2>You get to pick 3 special abilities, 1 from each category.</h2>
+<fieldset>
+<div id="defensePicker">
 <h2>Defensive Ability</h2>
 <label for="Heal">Heal</label>
 <input type="radio" name="Defense" id="Heal" checked="true" onclick="changeToolTip('HealText', '.DefenseToolTip')"><br>
@@ -44,9 +54,14 @@
     slightly reduce a heavy attack</span>
     <span class="DefenseToolTip" id="SleepText">Sleep will allow you to heal for a large amount, but you
     lose your next turn.</span>
+</div>
+  </fieldset>
 
 
 <h2>Offensive Ability</h2>
+<fieldset>
+<div id="offensePicker">
+  <h2>Defensive Ability</h2>
 <label for="Dive">Dive</label>
 <input type="radio" name="Offense" id="Dive" checked="true" onclick="changeToolTip('DiveText', '.OffenseToolTip')"><br>
 <label for="Pummel">Pummel</label>
@@ -59,8 +74,13 @@
     of damage.</span>
     <span class="OffenseToolTip" id="PokeText">You poke your enemy in the eye with your antennae
     dealing a small amount of damage, they attack second next turn to recover. Ew.</span>
+</div>
+  </fieldset>
+
 
 <h2>Wild Ability</h2>
+<fieldset>
+  <div id="wildPicker">
 <label for="Dazzle">Dazzle</label>
 <input type="radio" name="Wild" id="Dazzle" checked="true" onclick="changeToolTip('DazzleText', '.WildToolTip')"><br>
 <label for="Whoosh">Whoosh</label>
@@ -73,9 +93,13 @@
     the next turn.</span>
     <span class="WildToolTip" id="InnocenceText">You sit innocently in front of your enemy, they
     may feel too bad to hit you next turn.</span>
+    </div>
+  </fieldset>
 
 
 <h2>Now for your character's stats. You get 5 points extra in one of these.</h2>
+<fieldset>
+  <div id="statPicker">
 <label for="strength">Strength</label>
 <input type="radio" name="Stats" id="strength" checked="true" onclick="pictureChange('purplePicButterfly')"><br>
 <label for="defense">Defense</label>
@@ -84,6 +108,8 @@
 <input type="radio" name="Stats" id="speed"><br>
 <label for="stamina">Stamina</label>
 <input type="radio" name="Stats" id="stamina"><br>
+    </div>
+  </fieldset>
 
 
 <h2>Check over your selections, they are permanent once you continue.</h2>
