@@ -1,5 +1,5 @@
 //<!--Samantha Holloway Senior Project Oct 2014-->
-
+//creation.js
 //Change id to switch css styling for sprite sheet
 //So butterfly pics will change to corresponding radio buttons
 function pictureChange(pic) {
