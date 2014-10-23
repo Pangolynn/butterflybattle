@@ -30,5 +30,6 @@ production:
 #  <<: *default
   adapter: postgresql
   pool: 5
+  encoding: unicode
   timeout: 5000
   database: my_database_production
