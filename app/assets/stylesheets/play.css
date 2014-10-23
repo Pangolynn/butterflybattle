@@ -1,0 +1,38 @@
+#container{
+    padding-top:10px;
+    display:block;
+    border-radius:5px;
+    border-color:black;
+    border-style:solid;
+    height:500px;
+    width:700px;
+    margin:0 auto;
+    margin-top:20px;
+    text-align:center;
+    background-color:mediumpurple;
+
+}
+
+#battlefield{
+    text-align:center;
+    margin:0 auto;
+    border-radius:5px;
+    border-width:5px;
+    border-style:solid;
+    border-color:black;
+    display:block;
+    background:white;
+    height:300px;
+    width:600px;
+
+}
+
+#attacks{
+    border-style:solid;
+    margin:0 auto;
+    margin-top:10px;
+    background-color:white;
+    display:block;
+    height:150px;
+    width:400px;
+}

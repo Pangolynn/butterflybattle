@@ -3,6 +3,15 @@ class HomeController < ApplicationController
 
   end
 
+  def get_play
+      render template: "home/play"
+
+  end
+
+  def post_play
+      render template: "home/play"
+
+  end
 
 
 end

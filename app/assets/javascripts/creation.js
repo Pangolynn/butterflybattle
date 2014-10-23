@@ -13,6 +13,12 @@ function pictureChange(pic) {
         document.getElementById("blackPicButterfly").setAttribute("id", pic);
     }
 }
+
+function statChange(pic) {
+
+
+}
+
 //Display correct tooltip for corresponding ability
 function changeToolTip(ability, category) {
     var abilities = document.querySelectorAll(category);
@@ -22,6 +28,7 @@ function changeToolTip(ability, category) {
     }
     document.getElementById(ability).style.display = "inline-block";
 }
+
 
 //Send selected creation choices when user hits submit
 function submitData(){

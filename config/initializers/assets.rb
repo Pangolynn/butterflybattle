@@ -9,3 +9,4 @@ Rails.application.config.assets.version = '1.0'
  Rails.application.config.assets.precompile += %w( creation.css )
  Rails.application.config.assets.precompile += %w( Main.css )
  Rails.application.config.assets.precompile += %w( creation.js )
+ Rails.application.config.assets.precompile += %w( play.css)

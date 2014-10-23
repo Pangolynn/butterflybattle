@@ -4,6 +4,7 @@
 <html>
 <head lang="en">
   <%= stylesheet_link_tag "Main.css" %>
+  <%= stylesheet_link_tag "play.css" %>
   <meta charset="UTF-8">
   <title>Play!</title>
 </head>
@@ -11,6 +12,15 @@
 <%= image_tag("Headline.jpg", :class => 'WebsiteName', :alt => 'Logo') %>
 
 <!--Interface for actual gameplay will go here-->
+<div id="container">
+<div id="battlefield">
+  <%= image_tag("blackButterfly.jpg", :id => 'blackButterfly', :alt => 'blackButterfly') %>
+  <%= image_tag("cantankerousCaterpillar.jpg", :id => 'caterpillar', :alt => 'cantankerousCaterpillar') %>
+</div>
+<div id="attacks">
+
+</div>
+</div>
 
 </body>
 </html>

@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
    get 'creation' => 'home#creation'
    get 'directions' => 'home#directions'
-   get 'play' => 'home#play'
    get 'highscore' => 'home#highscore'
+   get 'play' => 'home#get_play'
+   post 'play' => 'home#post_play'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

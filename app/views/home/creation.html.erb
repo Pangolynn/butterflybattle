@@ -5,7 +5,7 @@
 <head lang="en">
   <%= stylesheet_link_tag "creation.css" %>
   <%= stylesheet_link_tag "Main.css" %>
- <%= javascript_include_tag "creation.js" %>
+  <%= javascript_include_tag "creation.js" %>
   <script src="creation.js"></script>
   <meta charset="UTF-8">
   <title>Character Creation</title>
@@ -16,6 +16,7 @@
 <h2>Create Your Character!</h2>
 
 <h2>To start off, choose a name for your character.</h2>
+<form action='/play'>
 <fieldset>
 <div id="namefield" >
 <label id ="name" for="characterName">Name</label>
@@ -59,10 +60,10 @@
   </fieldset>
 
 
-<h2>Offensive Ability</h2>
+
+  <h2>Offensive Ability</h2>
 <fieldset>
-<div id="offensePicker">
-  <h2>Defensive Ability</h2>
+  <div id="offensivePicker">
 <label for="Dive">Dive</label>
 <input type="radio" name="Offense" id="Dive" checked="true" onclick="changeToolTip('DiveText', '.OffenseToolTip')"><br>
 <label for="Pummel">Pummel</label>
@@ -102,19 +103,27 @@
 <fieldset>
   <div id="statPicker">
 <label for="strength">Strength</label>
-<input type="radio" name="Stats" id="strength" checked="true" onclick="pictureChange('purplePicButterfly')"><br>
+<input type="radio" name="Stats" id="strength" checked="true" onclick="statChange('stats')"><br>
 <label for="defense">Defense</label>
-<input type="radio" name="Stats" id="defense"><br>
+<input type="radio" name="Stats" id="defense" onclick="statChange('defense')"><br>
 <label for="speed">Speed</label>
-<input type="radio" name="Stats" id="speed"><br>
+<input type="radio" name="Stats" id="speed" onclick="statChange('speed')"><br>
 <label for="stamina">Stamina</label>
-<input type="radio" name="Stats" id="stamina"><br>
+<input type="radio" name="Stats" id="stamina" onclick="statChange('stamina')"><br>
+    <span class ="statPicker">
+    <%= image_tag("strength.jpg", :id => 'strength', :alt => 'strength') %>
+    <%= image_tag("stamina.jpg", :id => 'stamina', :alt => 'stamina') %>
+    <%= image_tag("speed.jpg", :id => 'speed', :alt => 'speed') %>
+    <%= image_tag("defense.jpg", :id => 'defense', :alt => 'defense') %>
+    </span>
     </div>
   </fieldset>
 
 
 <h2>Check over your selections, they are permanent once you continue.</h2>
 <button id="submit" onclick="submitData()">Submit</button>
+</form>
+
 
 <a href="#name" id="Backtotop">Back to Top</a>
 
