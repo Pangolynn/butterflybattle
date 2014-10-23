@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+<html>
 <!--Samantha Holloway Senior Project Oct 2014-->
 <!-- creation.html.erb -->
-<html>
 <head lang="en">
   <%= stylesheet_link_tag "creation.css" %>
   <%= stylesheet_link_tag "Main.css" %>
@@ -102,22 +102,23 @@
 <h2>Now for your character's stats. You get 5 points extra in one of these.</h2>
 <fieldset>
   <div id="statPicker">
-<label for="strength">Strength</label>
-<input type="radio" name="Stats" id="strength" checked="true" onclick="statChange('stats')"><br>
-<label for="defense">Defense</label>
-<input type="radio" name="Stats" id="defense" onclick="statChange('defense')"><br>
-<label for="speed">Speed</label>
-<input type="radio" name="Stats" id="speed" onclick="statChange('speed')"><br>
-<label for="stamina">Stamina</label>
-<input type="radio" name="Stats" id="stamina" onclick="statChange('stamina')"><br>
+<label for="Strength">Strength</label>
+<input type="radio" name="Stats" id="Strength" checked="true" onclick="statChange('Strength')"><br>
+<label for="Defense">Defense</label>
+<input type="radio" name="Stats" id="Defense"><br>
+<label for="Speed">Speed</label>
+<input type="radio" name="Stats" id="Speed"><br>
+<label for="Stamina">Stamina</label>
+<input type="radio" name="Stats" id="Stamina"><br>
     <span class ="statPicker">
-    <%= image_tag("strength.jpg", :id => 'strength', :alt => 'strength') %>
-    <%= image_tag("stamina.jpg", :id => 'stamina', :alt => 'stamina') %>
-    <%= image_tag("speed.jpg", :id => 'speed', :alt => 'speed') %>
-    <%= image_tag("defense.jpg", :id => 'defense', :alt => 'defense') %>
+        <%= image_tag("strength.jpg", :id => 'strength', :alt => 'strength') %>
+        <%= image_tag("stamina.jpg", :id => 'stamina', :alt => 'stamina') %>
+        <%= image_tag("speed.jpg", :id => 'speed', :alt => 'speed') %>
+        <%= image_tag("defense.jpg", :id => 'defense', :alt => 'defense') %>
     </span>
     </div>
   </fieldset>
+
 
 
 <h2>Check over your selections, they are permanent once you continue.</h2>

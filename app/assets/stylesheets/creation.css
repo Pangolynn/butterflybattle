@@ -51,12 +51,12 @@ img {
 .DefenseToolTip, .OffenseToolTip, .WildToolTip {
     height:250px;
     width:350px;
-    background-color:white;
+    background-color:papayawhip;
     display:inline-block;
     position: relative;
     vertical-align:top;
     text-align:center;
-    /*left:653px;*/
+    border-radius:10px;
     border-style:groove;
     border-width:5px;
 }

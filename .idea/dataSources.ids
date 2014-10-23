@@ -3,4 +3,10 @@
   <data-source source="LOCAL" name="Rails butterflybattle: development" uuid="838550b1-deb7-4d81-9bf0-5bb634a918e9">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source source="LOCAL" name="Rails butterflybattle: test" uuid="a9f1db11-1591-46ed-9aa4-4898fed24c70">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails butterflybattle: production" uuid="3c200112-8387-489a-922d-f22cb77b508c">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>
