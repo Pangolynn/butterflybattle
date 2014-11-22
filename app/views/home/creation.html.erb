@@ -19,21 +19,34 @@
 <form action='/play'>
 <fieldset>
 <div id="namefield" >
-<label id ="name" for="characterName">Name</label>
-<input type="text" name="characterName" id="characterName">
+  <%= text_field "character", "name", "size" => 20 %>
+
+<!--<label id ="name" for="characterName">Name</label>-->
+<!--<input type="text" name="characterName" id="characterName">-->
+
 </div>
 </fieldset>
 
 <h2>Now, choose your color</h2>
 <fieldset>
 <div id="colorPicker">
-<label for="purple">Purple</label>
-<input type="radio" name="Color" id="purple" checked="true" onclick="pictureChange('purplePicButterfly')"><br>
-<label for="red">Red</label>
-<input type="radio" name="Color" id="red" onclick="pictureChange('redPicButterfly')"><br>
-<label for="black">Black</label>
-<input type="radio" name="Color" id="black" onclick="pictureChange('blackPicButterfly')"><br>
-<%= image_tag("transparent.png", :class => 'butterfly', :id => 'purplePicButterfly', :alt => 'Butterfly') %>
+
+  <%= radio_button :character, :color, :purple , options ={:onclick=> "pictureChange('purplePicButterfly')"}%>
+  <%= label_tag(:color_purple, "Purple") %>
+  <%= radio_button :character, :color, :red , options ={:onclick=> "pictureChange('redPicButterfly')"}%>
+  <%= label_tag(:color_red, "Red") %>
+  <%= radio_button :character, :color, :black , options ={:onclick=> "pictureChange('blackPicButterfly')"}%>
+  <%= label_tag(:color_black, "Black") %>
+
+
+  <!--<label for="purple">Purple</label>-->
+<!--<input type="radio" name="Color" id="purple" checked="true" onclick="pictureChange('purplePicButterfly')"><br>-->
+<!--<label for="red">Red</label>-->
+<!--<input type="radio" name="Color" id="red" onclick="pictureChange('redPicButterfly')"><br>-->
+<!--<label for="black">Black</label>-->
+<!--<input type="radio" name="Color" id="black" onclick="pictureChange('blackPicButterfly')"><br>-->
+
+  <%= image_tag("transparent.png", :class => 'butterfly', :id => 'purplePicButterfly', :alt => 'Butterfly') %>
   </div>
 </fieldset>
 <!--<img src="transparent.png" class="butterfly" id="purplePicButterfly" alt="Butterfly"/>-->
@@ -45,6 +58,7 @@
 <fieldset>
 <div id="defensePicker">
 <h2>Defensive Ability</h2>
+  <%= radio_button :character, :defense, :heal , options ={:onclick=> "changeToolTip('HealText', '.DefenseToolTip')"}%>
 <label for="Heal">Heal</label>
 <input type="radio" name="Defense" id="Heal" checked="true" onclick="changeToolTip('HealText', '.DefenseToolTip')"><br>
 <label for="Block">Block</label>
