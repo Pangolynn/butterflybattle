@@ -20,123 +20,106 @@
 <fieldset>
 <div id="namefield" >
   <%= text_field "character", "name", "size" => 20 %>
-
-<!--<label id ="name" for="characterName">Name</label>-->
-<!--<input type="text" name="characterName" id="characterName">-->
-
 </div>
 </fieldset>
 
 <h2>Now, choose your color</h2>
 <fieldset>
 <div id="colorPicker">
-
   <%= radio_button :character, :color, :purple , options ={:onclick=> "pictureChange('purplePicButterfly')"}%>
   <%= label_tag(:color_purple, "Purple") %>
   <%= radio_button :character, :color, :red , options ={:onclick=> "pictureChange('redPicButterfly')"}%>
   <%= label_tag(:color_red, "Red") %>
   <%= radio_button :character, :color, :black , options ={:onclick=> "pictureChange('blackPicButterfly')"}%>
   <%= label_tag(:color_black, "Black") %>
-
-
-  <!--<label for="purple">Purple</label>-->
-<!--<input type="radio" name="Color" id="purple" checked="true" onclick="pictureChange('purplePicButterfly')"><br>-->
-<!--<label for="red">Red</label>-->
-<!--<input type="radio" name="Color" id="red" onclick="pictureChange('redPicButterfly')"><br>-->
-<!--<label for="black">Black</label>-->
-<!--<input type="radio" name="Color" id="black" onclick="pictureChange('blackPicButterfly')"><br>-->
-
   <%= image_tag("transparent.png", :class => 'butterfly', :id => 'purplePicButterfly', :alt => 'Butterfly') %>
-  </div>
+  <!-- Transparent image used to place behind a Sprite sheet
+   that is used to switch in and out Butterfly Images-->
+</div>
 </fieldset>
-<!--<img src="transparent.png" class="butterfly" id="purplePicButterfly" alt="Butterfly"/>-->
-<!-- Transparent image used to place behind a Sprite sheet
- that is used to switch in and out Butterfly Images-->
 
 
 <h2>You get to pick 3 special abilities, 1 from each category.</h2>
-<fieldset>
-<div id="defensePicker">
-<h2>Defensive Ability</h2>
-  <%= radio_button :character, :defense, :heal , options ={:onclick=> "changeToolTip('HealText', '.DefenseToolTip')"}%>
-<label for="Heal">Heal</label>
-<input type="radio" name="Defense" id="Heal" checked="true" onclick="changeToolTip('HealText', '.DefenseToolTip')"><br>
-<label for="Block">Block</label>
-<input type="radio" name="Defense" id="Block" onclick="changeToolTip('BlockText', '.DefenseToolTip')"><br>
-<label for="Sleep">Sleep</label>
-<input type="radio" name="Defense" id="Sleep" onclick="changeToolTip('SleepText', '.DefenseToolTip')"><br>
-<span class="DefenseToolTip" id="HealText">Heal will allow you to heal your character for a medium amount.</span>
-    <span class="DefenseToolTip" id="BlockText">Block will allow you to block a medium or less attack, and
-    slightly reduce a heavy attack</span>
-    <span class="DefenseToolTip" id="SleepText">Sleep will allow you to heal for a large amount, but you
-    lose your next turn.</span>
-</div>
+  <h2>Defensive Ability</h2>
+  <fieldset>
+  <div id="defensePicker">
+     <%= radio_button :character, :defense, :heal , options ={:onclick=> "changeToolTip('HealText', '.DefenseToolTip')"}%>
+     <%= label_tag(:defense_heal, "Heal") %>
+     <%= radio_button :character, :defense, :block , options ={:onclick=> "changeToolTip('BlockText', '.DefenseToolTip')"}%>
+     <%= label_tag(:defense_block, "Block") %>
+     <%= radio_button :character, :defense, :sleep , options ={:onclick=> "changeToolTip('SleepText', '.DefenseToolTip')"}%>
+     <%= label_tag(:defense_sleep, "Sleep") %>
+     <span class="DefenseToolTip" id="HealText">Heal will allow you to heal your character for a medium amount.</span>
+     <span class="DefenseToolTip" id="BlockText">Block will allow you to block a medium or less attack, and
+      slightly reduce a heavy attack</span>
+     <span class="DefenseToolTip" id="SleepText">Sleep will allow you to heal for a large amount, but you
+      lose your next turn.</span>
+  </div>
   </fieldset>
 
 
-
   <h2>Offensive Ability</h2>
-<fieldset>
+  <fieldset>
   <div id="offensivePicker">
-<label for="Dive">Dive</label>
-<input type="radio" name="Offense" id="Dive" checked="true" onclick="changeToolTip('DiveText', '.OffenseToolTip')"><br>
-<label for="Pummel">Pummel</label>
-<input type="radio" name="Offense" id="Pummel" onclick="changeToolTip('PummelText', '.OffenseToolTip')"><br>
-<label for="Poke">Poke</label>
-<input type="radio" name="Offense" id="Poke" onclick="changeToolTip('PokeText', '.OffenseToolTip')"><br>
+    <%= radio_button :character, :offense, :dive , options ={:onclick=> "changeToolTip('DiveText', '.OffenseToolTip')"}%>
+    <%= label_tag(:offense_dive, "Dive") %>
+    <%= radio_button :character, :offense, :pummel , options ={:onclick=> "changeToolTip('PummelText', '.OffenseToolTip')"}%>
+    <%= label_tag(:offense_dive, "Pummel") %>
+    <%= radio_button :character, :offense, :poke , options ={:onclick=> "changeToolTip('PokeText', '.OffenseToolTip')"}%>
+    <%= label_tag(:offense_dive, "Poke") %>
     <span class="OffenseToolTip" id="DiveText">Dive lets you fly into the air and then smash into your opponent
     for a large amount of damage, but you take a small amount of damage as well.</span>
     <span class="OffenseToolTip" id="PummelText">You pummel the enemy with your wings, dealing a medium amount
     of damage.</span>
     <span class="OffenseToolTip" id="PokeText">You poke your enemy in the eye with your antennae
     dealing a small amount of damage, they attack second next turn to recover. Ew.</span>
-</div>
+  </div>
   </fieldset>
 
 
-<h2>Wild Ability</h2>
-<fieldset>
+  <h2>Wild Ability</h2>
+  <fieldset>
   <div id="wildPicker">
-<label for="Dazzle">Dazzle</label>
-<input type="radio" name="Wild" id="Dazzle" checked="true" onclick="changeToolTip('DazzleText', '.WildToolTip')"><br>
-<label for="Whoosh">Whoosh</label>
-<input type="radio" name="Wild" id="Whoosh" onclick="changeToolTip('WhooshText', '.WildToolTip')"><br>
-<label for="Innocence">Innocence</label>
-<input type="radio" name="Wild" id="Innocence" onclick="changeToolTip('InnocenceText', '.WildToolTip')"><br>
+    <%= radio_button :character, :wild, :dazzle , options ={:onclick=> "changeToolTip('DazzleText', '.WildToolTip')"}%>
+    <%= label_tag(:offense_dazzle, "Dazzle") %>
+    <%= radio_button :character, :wild, :whoosh , options ={:onclick=> "changeToolTip('WhooshText', '.WildToolTip')"}%>
+    <%= label_tag(:offense_whoosh, "Whoosh") %>
+    <%= radio_button :character, :wild, :innocence , options ={:onclick=> "changeToolTip('InnocenceText', '.WildToolTip')"}%>
+    <%= label_tag(:offense_Innocence, "Innocence") %>
     <span class="WildToolTip" id="DazzleText">You dazzle the enemy with your beautiful wings, they attack
     second for the next two turns.</span>
     <span class="WildToolTip" id="WhooshText">You fly wildly around your enemy, they may hit themselves
     the next turn.</span>
     <span class="WildToolTip" id="InnocenceText">You sit innocently in front of your enemy, they
     may feel too bad to hit you next turn.</span>
-    </div>
+  </div>
   </fieldset>
 
 
-<h2>Now for your character's stats. You get 5 points extra in one of these.</h2>
-<fieldset>
+  <h2>Now for your character's stats. You get 5 points extra in one of these.</h2>
+  <fieldset>
   <div id="statPicker">
-<label for="Strength">Strength</label>
-<input type="radio" name="Stats" id="Strength" checked="true" onclick="statChange('Strength')"><br>
-<label for="Defense">Defense</label>
-<input type="radio" name="Stats" id="Defense"><br>
-<label for="Speed">Speed</label>
-<input type="radio" name="Stats" id="Speed"><br>
-<label for="Stamina">Stamina</label>
-<input type="radio" name="Stats" id="Stamina"><br>
+    <%= radio_button :character, :stat, :strength , options ={:onclick=> "statChange('Strength')"}%>
+    <%= label_tag(:stat_strength, "Strength") %>
+    <%= radio_button :character, :stat, :defense , options ={:onclick=> "statChange('Defense')"}%>
+    <%= label_tag(:stat_defense, "Defense") %>
+    <%= radio_button :character, :stat, :speed , options ={:onclick=> "statChange('Speed')"}%>
+    <%= label_tag(:stat_speed, "Speed") %>
+    <%= radio_button :character, :stat, :stamina , options ={:onclick=> "statChange('Stamina')"}%>
+    <%= label_tag(:stat_stamina, "Stamina") %>
     <span class ="statPicker">
         <%= image_tag("strength.jpg", :id => 'strength', :alt => 'strength') %>
         <%= image_tag("stamina.jpg", :id => 'stamina', :alt => 'stamina') %>
         <%= image_tag("speed.jpg", :id => 'speed', :alt => 'speed') %>
         <%= image_tag("defense.jpg", :id => 'defense', :alt => 'defense') %>
     </span>
-    </div>
+  </div>
   </fieldset>
 
 
 
 <h2>Check over your selections, they are permanent once you continue.</h2>
-<button id="submit" onclick="submitData()">Submit</button>
+<button id="submit">Submit</button>
 </form>
 
 

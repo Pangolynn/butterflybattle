@@ -25,10 +25,3 @@ function changeToolTip(ability, category) {
 }
 
 
-//Send selected creation choices when user hits submit
-function submitData(){
-        //console.log($("input:checked").val() + " is checked!" );
-    //Function will search page to collect the user's choices
-    //and send data to a another function to be used
-    //redirect to play page when complete
-}
