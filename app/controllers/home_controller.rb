@@ -4,7 +4,9 @@ class HomeController < ApplicationController
   end
 
   def get_play
+    @color = params[:color]
       render template: "home/play"
+
 
   end
 

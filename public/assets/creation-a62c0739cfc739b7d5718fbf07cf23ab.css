@@ -1,0 +1,120 @@
+/*Samantha Holloway Senior Project Oct 2014*/
+/* creation.css */
+
+h2 {
+    color:white;
+
+}
+
+label {
+    margin-right:3%;
+    color:black;
+    display:inline-block;
+}
+
+fieldset {
+    text-align:center;
+}
+#namefield, #defensePicker, #wildPicker, #offensePicker,
+#colorPicker, #statPicker {
+    margin: auto;
+}
+
+#colorPicker{
+    padding-right: 20px;
+}
+
+
+input {
+    display:inline-block;
+    margin-right:5px;
+
+}
+
+span {
+    display:block;
+    margin: 0 auto;
+}
+
+img {
+    width:150px;
+    height:150px;
+    display:inline-block;
+    vertical-align:top;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+
+.DefenseToolTip, .OffenseToolTip, .WildToolTip {
+    height:250px;
+    width:350px;
+    background-color:papayawhip;
+    display:inline-block;
+    position: relative;
+    vertical-align:top;
+    text-align:center;
+    border-radius:10px;
+    border-style:groove;
+    border-width:5px;
+}
+
+#speed, #stamina, #defense, #offense{
+    display:none;
+}
+#strength{
+    display:inline-block;
+}
+
+
+#BlockText {
+    display:none;
+}
+
+#SleepText {
+    display:none;
+}
+
+#PummelText{
+    display:none;
+}
+
+#PokeText{
+    display:none;
+}
+
+#WhooshText{
+    display:none;
+}
+
+#InnocenceText{
+    display:none;
+}
+
+#purplePicButterfly{
+    background: url('spritesheet.png') no-repeat -233px -5px; width: 274px; height: 219px;
+}
+
+#redPicButterfly{
+    background: url('spritesheet.png') no-repeat -5px -234px; width: 253px; height: 211px;
+}
+
+#blackPicButterfly{
+    background: url('spritesheet.png') no-repeat -5px -5px; width: 218px; height: 168px;
+}
+
+#submit{
+    display:block;
+    margin:0 auto;
+    padding: 10px 15px;
+    background-color: mediumpurple;
+    color:white;
+}
+
+#Backtotop{
+    display:block;
+    margin:0 auto;
+}

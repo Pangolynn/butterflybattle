@@ -5,36 +5,50 @@
 <head lang="en">
   <%= stylesheet_link_tag "Main.css" %>
   <%= stylesheet_link_tag "play.css" %>
+  <%= javascript_include_tag "play" %>
+  <%= javascript_include_tag :application %>
   <meta charset="UTF-8">
   <title>Play!</title>
 </head>
 <body>
 <%= image_tag("Headline.jpg", :class => 'WebsiteName', :alt => 'Logo') %>
+<!-- The parameters from create page -->
+<%= @params = params[:character] %>
 
-<%= params.inspect %>
-<!--Interface for actual gameplay will go here-->
 <div id="versusBox">
-  <b>Level One</b><br> Sam <br>Vs<br>Cantankerous Caterpillar!
+  <b>Level One</b><br> <%= @params[:name] %> <br>Vs<br>Cantankerous Caterpillar!
 </div>
 <div id="container">
 <div id="battlefield">
-  <%= image_tag("blackButterfly.jpg", :id => 'blackButterfly', :alt => 'blackButterfly') %>
-  <%= image_tag("cantankerousCaterpillar.jpg", :id => 'caterpillar', :alt => 'cantankerousCaterpillar') %>
+  <div id="characterfield" >
+    <canvas id="charhealthbar"> </canvas>
+        <%= if @params[:color] == "black"
+                image_tag("blackButterfly.jpg", :id => 'blackButterfly', :alt => 'blackButterfly')
+            elsif @params[:color] == "red"
+                image_tag("redButterfly.jpg", :id => 'redButterfly', :alt => 'redButterfly')
+            else
+                image_tag("purpleButterfly.jpg", :id => 'purpleButterfly', :alt => 'purpleButterfly')
+            end
+        %>
+  </div>
+  <div id="npcfield">
+    <canvas id="npchealthbar"></canvas>
+        <%= image_tag("cantankerousCaterpillar.jpg", :class =>'npcimage', :id => 'caterpillar', :alt => 'cantankerousCaterpillar') %>
+  </div>
 </div>
 <div id="attacks">
-<button>
-Attack
-</button>
-  <button>
-    Heal
-  </button>
-  <button>
-    Dive
-  </button>
-  <button>
-    Whoosh
-  </button>
-
+    <button>
+        Attack
+    </button>
+    <button>
+        Heal
+    </button>
+    <button>
+        Dive
+    </button>
+    <button>
+        Whoosh
+    </button>
 </div>
 </div>
 
