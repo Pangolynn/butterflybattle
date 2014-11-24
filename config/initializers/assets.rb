@@ -11,3 +11,4 @@ Rails.application.config.assets.version = '1.0'
  Rails.application.config.assets.precompile += %w( creation.js )
  Rails.application.config.assets.precompile += %w( play.css)
  Rails.application.config.assets.precompile += %w( play.js )
+ Rails.application.config.assets.precompile += %w( jquery-2.1.1.min.js )

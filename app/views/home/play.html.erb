@@ -5,15 +5,15 @@
 <head lang="en">
   <%= stylesheet_link_tag "Main.css" %>
   <%= stylesheet_link_tag "play.css" %>
+  <%= javascript_include_tag "jquery-2.1.1.min" %>
   <%= javascript_include_tag "play" %>
-  <%= javascript_include_tag :application %>
   <meta charset="UTF-8">
   <title>Play!</title>
 </head>
 <body>
 <%= image_tag("Headline.jpg", :class => 'WebsiteName', :alt => 'Logo') %>
 <!-- The parameters from create page -->
-<%= @params = params[:character] %>
+<% @params = params[:character] %>
 
 <div id="versusBox">
   <b>Level One</b><br> <%= @params[:name] %> <br>Vs<br>Cantankerous Caterpillar!
@@ -41,13 +41,13 @@
         Attack
     </button>
     <button>
-        Heal
+       <%=  @params[:defense].capitalize %>
     </button>
     <button>
-        Dive
+       <%= @params[:offense].capitalize %>
     </button>
     <button>
-        Whoosh
+       <%= @params[:wild].capitalize %>
     </button>
 </div>
 </div>

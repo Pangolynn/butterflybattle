@@ -21,7 +21,7 @@
     font-style:italic;
     display:block;
     float:left;
-    top:70%;
+    top:50%;
     color:mediumpurple;
     background:black;
     border-radius:15px;
@@ -71,7 +71,7 @@ button{
     position:relative;
     top:30%;
     height:60px;
-    width:70px;
+    width:80px;
 
 }
 
@@ -90,18 +90,20 @@ button{
 #charhealthbar{
     width:180px;
     height:25px;
+    border-radius:3px;
     border:1px solid #000000;
-    background-color:limegreen;
+    background-color:white;
     display:block;
     margin:5px 5px;
 }
 #npchealthbar{
     display:inline-block;
+    border-radius:3px;
     margin:5px;
     float:right;
     width:180px;
     height:25px;
-    background-color:limegreen;
+    background-color:white;
     border:1px solid #000000;
 
 }
