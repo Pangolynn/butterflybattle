@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  userID: MyString
+  pName: MyString
+  pHealth: 1
+  pDefense: 1
+
+two:
+  userID: MyString
+  pName: MyString
+  pHealth: 1
+  pDefense: 1

@@ -17,11 +17,11 @@
   that get progressively harder as you move through each level. At the end, you<br>
   can enter your name on the High Score table to etch your achievement in history!
 </p>
-
-<p>For a more detailed set of directions go <%= link_to "here", :action => 'directions'%>, or click below<br>
+<!--go to directions-->
+<p>For a more detailed set of directions go <%= link_to "here", games_path%>, or click below<br>
   to get started!
 </p>
 
-<h1><%= link_to "Create your Butterfly Battler!", :action => 'creation'%></h1>
+<h1><%= link_to 'Create your Butterfly Battler!', new_game_path %></h1>
 </body>
 </html>

@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  get 'games/index'
+  get 'games/update', to: 'games#update'
+  resources :games
+  root 'games#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'home#index'
-
-   get 'creation' => 'home#creation'
-   get 'directions' => 'home#directions'
-   get 'highscore' => 'home#highscore'
-   get 'play' => 'home#get_play'
-   post 'play' => 'home#post_play'
 
 
   # Example of regular route:

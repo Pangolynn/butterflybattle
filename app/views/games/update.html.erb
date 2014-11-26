@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--Samantha Holloway Senior Project Oct 2014-->
-<!-- play.html.erb -->
+<!-- update.html.erb -->
 <html>
 <head lang="en">
   <%= stylesheet_link_tag "Main.css" %>
@@ -11,20 +11,24 @@
   <title>Play!</title>
 </head>
 <body>
+
+<p><%= @game.pName %></p>
+<p><%= @game.pHealth %></p>
+<p><%= @game.pDefense %></p>
 <%= image_tag("Headline.jpg", :class => 'WebsiteName', :alt => 'Logo') %>
 <!-- The parameters from create page -->
-<% @params = params[:character] %>
+
 
 <div id="versusBox">
-  <b>Level One</b><br> <%= @params[:name] %> <br>Vs<br>Cantankerous Caterpillar!
+  <b>Level One</b><br> <%= @game.pName %> <br>Vs<br>Cantankerous Caterpillar!
 </div>
 <div id="container">
 <div id="battlefield">
   <div id="characterfield" >
     <canvas id="charhealthbar"> </canvas>
-        <%= if @params[:color] == "black"
+        <%= if @game.pColor == "black"
                 image_tag("blackButterfly.jpg", :id => 'blackButterfly', :alt => 'blackButterfly')
-            elsif @params[:color] == "red"
+            elsif @game.pColor == "red"
                 image_tag("redButterfly.jpg", :id => 'redButterfly', :alt => 'redButterfly')
             else
                 image_tag("purpleButterfly.jpg", :id => 'purpleButterfly', :alt => 'purpleButterfly')
@@ -38,19 +42,20 @@
 </div>
 <div id="attacks">
     <button>
-        Attack
-    </button>
-    <button>
-       <%=  @params[:defense].capitalize %>
-    </button>
-    <button>
-       <%= @params[:offense].capitalize %>
-    </button>
-    <button>
-       <%= @params[:wild].capitalize %>
-    </button>
-</div>
-</div>
 
+    </button>
+    <button>
+       <%=  @game.pDefenseAbility %>
+    </button>
+    <button>
+       <%= @game.pOffenseAbility %>
+    </button>
+    <button>
+       <%= @game.pWildAbility %>
+    </button>
+</div>
+</div>
+<!--rake db:reset clear entries-->
+<%= link_to 'Attack', games_update_path %>
 </body>
 </html>

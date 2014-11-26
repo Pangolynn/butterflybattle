@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <!--Samantha Holloway Senior Project Oct 2014-->
-<!-- creation.html.erb -->
+<!-- new.html.erb -->
 <head lang="en">
   <%= stylesheet_link_tag "creation.css" %>
   <%= stylesheet_link_tag "Main.css" %>
@@ -16,10 +16,12 @@
 <h2>Create Your Character!</h2>
 
 <h2>To start off, choose a name for your character.</h2>
-<form action='/play'>
+
+<%= form_for :game, url:games_path do |g| %>
+
 <fieldset>
 <div id="namefield" >
-  <%= text_field "character", "name", "size" => 20 %>
+  <%= g.text_field :pName %>
 </div>
 </fieldset>
 
@@ -119,11 +121,11 @@
 
 
 <h2>Check over your selections, they are permanent once you continue.</h2>
-<button id="submit">Submit</button>
-</form>
+<button id="submit"><%= g.submit %></button>
+
 
 
 <a href="#name" id="Backtotop">Back to Top</a>
-
+<% end %>
 </body>
 </html>
