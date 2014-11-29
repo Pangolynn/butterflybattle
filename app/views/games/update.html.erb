@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--Samantha Holloway Senior Project Oct 2014-->
+<!--Samantha Holloway Senior Project Nov 2014-->
 <!-- update.html.erb -->
 <html>
 <head lang="en">
@@ -12,23 +12,26 @@
 </head>
 <body>
 
-<p><%= @game.pName %></p>
-<p><%= @game.pHealth %></p>
-<p><%= @game.pDefense %></p>
+<p><%= @game.p_defense %></p>
+<p><%= @game.p_name %></p>
+<p id="npc_cur_health"><%= @game.npc_cur_health %></p>
+<p id="p_cur_health"><%= @game.p_cur_health %></p>
+<p id="npc_max_health"><%= @game.npc_max_health %></p>
+<p id="p_max_health"><%= @game.p_max_health %></p>
+<p><%= @game.p_color %></p>
+<p><%= @saved %></p>
 <%= image_tag("Headline.jpg", :class => 'WebsiteName', :alt => 'Logo') %>
-<!-- The parameters from create page -->
-
 
 <div id="versusBox">
-  <b>Level One</b><br> <%= @game.pName %> <br>Vs<br>Cantankerous Caterpillar!
+  <b>Level <%= @game.level %></b><br> <%= @game.p_name %> <br>Vs<br><%= @game.npc_name %>
 </div>
 <div id="container">
 <div id="battlefield">
   <div id="characterfield" >
-    <canvas id="charhealthbar"> </canvas>
-        <%= if @game.pColor == "black"
+    <canvas id="phealthbar"></canvas>
+        <%= if @game.p_color == "black"
                 image_tag("blackButterfly.jpg", :id => 'blackButterfly', :alt => 'blackButterfly')
-            elsif @game.pColor == "red"
+            elsif @game.p_color == "red"
                 image_tag("redButterfly.jpg", :id => 'redButterfly', :alt => 'redButterfly')
             else
                 image_tag("purpleButterfly.jpg", :id => 'purpleButterfly', :alt => 'purpleButterfly')
@@ -41,21 +44,19 @@
   </div>
 </div>
 <div id="attacks">
-    <button>
+       <% if @game.p_win == FALSE && @game.npc_win == FALSE %>
+       <%= link_to 'Attack', games_update_path(:option => 'Attack') %>
+       <%= link_to @game.p_defense, games_update_path %>
+       <%= link_to @game.p_offense, games_update_path %>
+       <%= link_to @game.p_wild, games_update_path %>
+       <% else %>
+       <%= link_to 'Continue', games_update_path %>
+       <% end %>
 
-    </button>
-    <button>
-       <%=  @game.pDefenseAbility %>
-    </button>
-    <button>
-       <%= @game.pOffenseAbility %>
-    </button>
-    <button>
-       <%= @game.pWildAbility %>
-    </button>
 </div>
 </div>
 <!--rake db:reset clear entries-->
-<%= link_to 'Attack', games_update_path %>
+
+
 </body>
 </html>

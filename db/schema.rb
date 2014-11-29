@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124175942) do
+ActiveRecord::Schema.define(version: 20141129011253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,39 @@ ActiveRecord::Schema.define(version: 20141124175942) do
     t.string   "pDefenseAbility"
     t.string   "pOffenseAbility"
     t.string   "pWildAbility"
+    t.integer  "p_max_health"
+    t.integer  "p_cur_health"
+    t.integer  "npc_max_health"
+    t.integer  "npc_cur_health"
+    t.integer  "p_max_speed"
+    t.integer  "p_cur_speed"
+    t.integer  "p_max_armor"
+    t.integer  "p_cur_armor"
+    t.integer  "p_max_attack"
+    t.integer  "p_cur_attack"
+    t.string   "p_name"
+    t.string   "p_stat_boost"
+    t.string   "p_wild"
+    t.string   "p_offense"
+    t.string   "p_defense"
+    t.string   "p_last_move"
+    t.integer  "npc_max_speed"
+    t.integer  "npc_cur_speed"
+    t.integer  "npc_max_armor"
+    t.integer  "npc_cur_armor"
+    t.integer  "npc_max_attack"
+    t.integer  "npc_cur_attack"
+    t.string   "npc_name"
+    t.string   "p_color"
+    t.string   "npc_wild"
+    t.string   "npc_offense"
+    t.string   "npc_defense"
+    t.string   "npc_last_move"
+    t.integer  "level"
+    t.string   "p_id"
+    t.boolean  "p_win"
+    t.boolean  "npc_win"
+    t.integer  "p_loss_counter"
   end
 
 end

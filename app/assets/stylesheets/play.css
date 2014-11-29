@@ -63,16 +63,32 @@
 
 }
 
-button{
-    color:mediumpurple;
+a{
+
     background-color:black;
     border-radius:10px;
     border-color:mediumpurple;
     position:relative;
     top:30%;
+    background-size: 100px 100px;
     height:60px;
     width:80px;
+    padding:10px;
+    color:mediumpurple;
+    font-size:1em;
+}
+a:link {
 
+    color:mediumpurple;
+    text-decoration:none;
+    background-size: 100px 100px;
+}
+
+
+a:visited {
+    color:mediumpurple;
+    text-decoration:none;
+    background-size: 100px 100px;
 }
 
 #purplePicButterfly{
@@ -87,7 +103,7 @@ button{
     background: url('spritesheet.png') no-repeat -5px -5px; width: 218px; height: 168px;
 }
 
-#charhealthbar{
+#phealthbar{
     width:180px;
     height:25px;
     border-radius:3px;
@@ -124,3 +140,4 @@ button{
     width:300px;
 
 }
+
