@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  level: 1
+  npc_max_health: 1
+  npc_cur_health: 1
+  npc_max_speed: 1
+  npc_cur_speed: 1
+  npc_max_armor: 1
+  npc_cur_armor: 1
+  npc_max_attack: 1
+  npc_cur_attack: 1
+  npc_file: MyString
+  npc_name: MyString
+  npc_wild: MyString
+  npc_offense: MyString
+  npc_defense: MyString
+
+two:
+  level: 1
+  npc_max_health: 1
+  npc_cur_health: 1
+  npc_max_speed: 1
+  npc_cur_speed: 1
+  npc_max_armor: 1
+  npc_cur_armor: 1
+  npc_max_attack: 1
+  npc_cur_attack: 1
+  npc_file: MyString
+  npc_name: MyString
+  npc_wild: MyString
+  npc_offense: MyString
+  npc_defense: MyString
