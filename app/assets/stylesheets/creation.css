@@ -117,3 +117,19 @@ img {
     display:block;
     margin:0 auto;
 }
+
+#Strength{
+    background: url('statsheet.png') no-repeat -7px -3px; width: 205px; height: 256px;
+}
+
+#Speed{
+    background: url('statsheet.png') no-repeat -8px -330px; width: 273px; height: 209px;
+}
+
+#Stamina{
+    background: url('statsheet.png') no-repeat -302px -42px; width: 175px; height: 165px;
+}
+
+#Defense{
+    background: url('statsheet.png') no-repeat -13px -604px; width: 199px; height: 301px;
+}

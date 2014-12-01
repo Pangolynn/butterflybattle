@@ -12,23 +12,21 @@
 </head>
 <body>
 
-<div id="stats">
-<p id="npc_cur_health">NPC Health <%= @game.npc_cur_health %></p>
-<p id="p_cur_health"> Player Health <%= @game.p_cur_health %></p>
-<p id="npc_max_health">NPC Max health <%= @game.npc_max_health %></p>
-<p id="p_max_health">Player max Health <%= @game.p_max_health %></p>
-<p> Npc armor<%= @game.npc_max_armor %></p>
-  <p> Npc speed <%= @game.npc_max_speed %> </p>
-  <p> Player speed <%= @game.p_max_speed %></p>
-  <p>Npc offense <%= @game.npc_max_attack %></p>
-  <p>Player offense <%= @game.npc_max_attack %></p>
-  <p>Npc defense <%= @game.npc_max_armor %></p>
-  <p>Player defense <%= @game.npc_max_armor %></p>
-</div>
+
 <%= image_tag("Headline.jpg", :class => 'WebsiteName', :alt => 'Logo') %>
 
+<div id = "stageArea">
 <div id="versusBox">
   <b>Level <%= @game.level %></b><br> <%= @game.p_name %> <br>Vs<br><%= @game.npc_name %>
+</div>
+<div id="historyBox">
+  <div id="history">
+    <p><%= @game.npc_name %></p>
+    <p>used <%= @game.npc_last_move %>!</p>
+    <p id="npc_cur_health">NPC Health <%= @game.npc_cur_health %></p>
+    <p id="p_cur_health"> Player Health <%= @game.p_cur_health %></p>
+
+  </div>
 </div>
 <div id="container">
 <div id="battlefield">
@@ -45,7 +43,7 @@
   </div>
   <div id="npcfield">
     <canvas id="npchealthbar"></canvas>
-        <%= image_tag(@game.npc_file, :class =>'npcimage', :id => @game.npc_name, :alt => 'cantankerousCaterpillar') %>
+        <%= image_tag(@game.npc_file, :class =>'npcimage', :id => @game.npc_name, :alt => @game.npc_name) %>
   </div>
 </div>
 <div id="attacks">
@@ -58,6 +56,7 @@
        <%= link_to 'Continue', games_update_path(:option => 'Decision') %>
        <% end %>
 
+</div>
 </div>
 </div>
 </body>

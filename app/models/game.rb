@@ -37,6 +37,7 @@ class Game < ActiveRecord::Base
     save!
   end
 
+  #Used to access NPC Model Data to update the current NPC display and stats
   def update_npc(npc_name, npc_file, npc_wild, npc_offense, npc_defense,
                npc_max_health, npc_max_armor, npc_max_attack, npc_max_speed)
     self.npc_max_armor = npc_max_armor + self.level * 10
@@ -135,7 +136,7 @@ class Game < ActiveRecord::Base
   end
 
   def ai_move
-      if self.level < 3  #Level 1 and 2 should have silly AI
+      if self.level < 8  #Level 1 and 2 should have silly AI
         lowai
       elsif self.level < 5  #Level 3-5 have more complicated AI
         mediumai

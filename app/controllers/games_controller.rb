@@ -14,11 +14,16 @@ def update
   #Win/Lose Update Battlefield
   if params[:option] == 'Decision'
     level = @game.level + 1
-    @npc = Npc.find_by(level: level)
-    @game.update_npc(@npc.npc_name, @npc.npc_file, @npc.npc_wild, @npc.npc_offense,
+    if level <= 7
+      @npc = Npc.find_by(level: level)
+      @game.update_npc(@npc.npc_name, @npc.npc_file, @npc.npc_wild, @npc.npc_offense,
                     @npc.npc_defense, @npc.npc_max_health, @npc.npc_max_armor,
                     @npc.npc_max_attack, @npc.npc_max_speed)
-    @game.continue
+      @game.continue
+    else
+      @game.continue
+    end
+
   #What attack was pressed
   elsif params[:option] == 'Attack'
     @game.taketurn('Attack')

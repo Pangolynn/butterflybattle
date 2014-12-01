@@ -98,7 +98,7 @@
   </fieldset>
 
 
-  <h2>Now for your character's stats. You get 5 points extra in one of these.</h2>
+  <h2>Now for your character's stats. You get extra points in one of these.</h2>
   <fieldset>
   <div id="statPicker">
     <%= g.radio_button :p_stat_boost, :Strength , options ={:onclick=> "statChange('Strength')"}%>
@@ -110,10 +110,8 @@
     <%= g.radio_button :p_stat_boost, :Stamina , options ={:onclick=> "statChange('Stamina')"}%>
     <%= label_tag(:stat_stamina, "Stamina") %>
     <span class ="statPicker">
-        <%= image_tag("strength.jpg", :id => 'strength', :alt => 'strength') %>
-        <%= image_tag("stamina.jpg", :id => 'stamina', :alt => 'stamina') %>
-        <%= image_tag("speed.jpg", :id => 'speed', :alt => 'speed') %>
-        <%= image_tag("defense.jpg", :id => 'defense', :alt => 'defense') %>
+      <%= image_tag("transparent.png", :class => 'stat', :id => 'Strength', :alt => 'Strength') %>
+
     </span>
   </div>
   </fieldset>

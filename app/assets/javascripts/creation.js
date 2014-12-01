@@ -24,4 +24,19 @@ function changeToolTip(ability, category) {
     document.getElementById(ability).style.display = "inline-block";
 }
 
+function statChange(statPic) {
+    if (document.getElementById("Strength")) {
+        document.getElementById("Strength").setAttribute("id", statPic);
+    }
+    else if (document.getElementById("Defense")) {
+        document.getElementById("Defense").setAttribute("id", statPic);
+    }
+    else if (document.getElementById("Speed")) {
+        document.getElementById("Speed").setAttribute("id", statPic);
+    }
+    else
+        document.getElementById("Stamina").setAttribute("id", statPic);
+
+}
+
 
