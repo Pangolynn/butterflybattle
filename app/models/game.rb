@@ -73,6 +73,7 @@ class Game < ActiveRecord::Base
       #Check player health
       if self.p_cur_health <= 0
         self.npc_win = TRUE
+        self.p_loss_counter +=1
       else
         player_move(move_type)
         #Make sure the NPC hasn't already won since we can't stop
@@ -90,6 +91,7 @@ class Game < ActiveRecord::Base
         ai_move
         if self.p_cur_health <= 0 && self.p_win != TRUE
           self.npc_win = TRUE
+          self.p_loss_counter +=1
         end
       end
     end
@@ -99,8 +101,7 @@ class Game < ActiveRecord::Base
   def player_move(move_type)
     if move_type == 'Attack'
     #Attack
-    self.npc_cur_health = self.npc_cur_health - self.p_cur_attack * 0.1
-                        - self.npc_cur_armor * 0.1 + 40
+    self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.1) - (self.npc_cur_armor * 0.1) + 10
     elsif move_type == 'Defense'
       p_defense_move
     elsif move_type == 'Offense'
@@ -112,27 +113,78 @@ class Game < ActiveRecord::Base
   end
 
   def p_defense_move
+      if self.p_defense == "Block"
 
+      elsif self.p_defense == "Heal"
+
+      #Sleep
+      else
+
+      end
   end
 
+  #Offensive moves deal more damage when the enemy is below 25% health
   def p_offense_move
+      if self.p_offense == "Pummel"
+        if self.npc_cur_health < self.npc_max_health * 0.25
+          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.2) - (self.npc_cur_armor * 0.1) + 10
+        else
+          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.15) - (self.npc_cur_armor * 0.1) + 10
+        end
+      elsif self.p_offense == "Dive"
+        if self.npc_cur_health < self.npc_max_health * 0.25
+          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.25) - (self.npc_cur_armor * 0.1) + 10
+          self.p_cur_health = self.p_cur_health - (self.p_cur_attack * 0.1) - (self.p_cur_armor * 0.1) + 5
+        else
+          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.2) - (self.npc_cur_armor * 0.1) + 10
+        end
+      #Poke
+      else
+        self.lose_turn == TRUE
 
+
+      end
   end
 
+  #Wild Moves are more effect when the enemy is above 75% health
   def p_wild_move
+    if self.p.wild == "Innocence"
+    elsif self.p_wild == "Dazzle"
+    #Whoosh
+    else
+
+    end
 
   end
 
   def npc_defense_move
+    if self.npc_defense == "Block"
 
+    elsif self.npc_defense == "Heal"
+
+      #Sleep
+    else
+
+    end
   end
 
   def npc_offense_move
+    if self.npc_offense == "Pummel"
 
+    elsif self.npc_offense == "Dive"
+      #Poke
+    else
+
+    end
   end
 
   def npc_wild_move
+    if self.npc.wild == "Innocence"
+    elsif self.npc_wild == "Dazzle"
+      #Whoosh
+    else
 
+    end
   end
 
   def ai_move
@@ -157,15 +209,15 @@ class Game < ActiveRecord::Base
           - (self.p_cur_armor * 0.1) + 10
         when 1
           self.npc_last_move = self.npc_offense.capitalize
-          npc_offense_move
+          # npc_offense_move
 
         when 2
           self.npc_last_move = self.npc_defense.capitalize
-          npc_defense_move
+          # npc_defense_move
 
         when 3
           self.npc_last_move = self.npc_wild.capitalize
-          npc_wild_move
+          # npc_wild_move
 
         else
           print("Not a possible move")
