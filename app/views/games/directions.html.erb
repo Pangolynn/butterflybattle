@@ -26,8 +26,8 @@
   <li>You beat every level!</li>
 </ul>
 <p>
-  Once you have finished, you will be asked to enter<br>
-  your name on the <%= link_to "High Score Board", game_path, :color => 'purple'%> if you are in the top 10.<br>
+  Once you have finished, your name may be put into the high score board<br>
+  if you are in the top 10.<br>
 </p>
 
 <h2>Character Creation</h2>
@@ -54,7 +54,7 @@
   how many levels you win before the game ends.<br>
 </p>
 
-<h2><%= link_to 'Get Started!', :action => 'creation'%></h2>
+<h2><%= link_to 'Get Started!', new_game_path %></h2>
 
 </body>
 </html>

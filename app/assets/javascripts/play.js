@@ -18,11 +18,6 @@ $(window).load(function()
 //    Fill player health bar according to percent health left
     ctx.fillRect(0,0,fill, 150);
 
-    console.log(percent);
-    console.log(p_cur_health);
-    console.log(p_max_health);
-    console.log(200);
-
 
 //    NPC Health Bar
     var npcc = document.getElementById("npchealthbar");
@@ -34,10 +29,7 @@ $(window).load(function()
     npcctx.fillStyle = "#32cd32";
 //    Fill NPC health bar according to percent health left
     npcctx.fillRect(0,0,npcfill, 150);
-    console.log(npc_cur_health);
-    console.log(npc_max_health);
-    console.log(npcfill);
-    console.log(npcpercent);
+
 
 });
 

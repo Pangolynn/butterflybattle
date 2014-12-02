@@ -4,10 +4,13 @@ class GamesController < ApplicationController
 
   def new
   end
-
+  def games_directions
+    render :action => 'directions'
+  end
   def show
 
-    @highscores = Highscore.all
+    @highscores = Highscore.order(p_score: :desc).limit(10)
+
     render :action => 'highscore'
   end
 def update

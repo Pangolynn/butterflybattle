@@ -137,6 +137,7 @@ class Game < ActiveRecord::Base
           self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.25) - (self.npc_cur_armor * 0.1) + 10
           self.p_cur_health = self.p_cur_health - (self.p_cur_attack * 0.1) - (self.p_cur_armor * 0.1) + 5
         else
+          self.p_cur_health = self.p_cur_health - (self.p_cur_attack * 0.1) - (self.p_cur_armor * 0.1) + 5
           self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.2) - (self.npc_cur_armor * 0.1) + 10
         end
       #Poke
@@ -171,8 +172,19 @@ class Game < ActiveRecord::Base
 
   def npc_offense_move
     if self.npc_offense == "Pummel"
-
+      if self.p_cur_health < self.p_max_health * 0.25
+        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.2) - (self.p_cur_armor * 0.1) + 10
+      else
+        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.15) - (self.p_cur_armor * 0.1) + 10
+      end
     elsif self.npc_offense == "Dive"
+      if self.p_cur_health < self.p_max_health * 0.25
+        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.25) - (self.p_cur_armor * 0.1) + 10
+        self.npc_cur_health = self.npc_cur_health - (self.npc_cur_attack * 0.1) - (self.npc_cur_armor * 0.1) + 5
+      else
+        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.2) - (self.p_cur_armor * 0.1) + 10
+        self.npc_cur_health = self.npc_cur_health - (self.npc_cur_attack * 0.1) - (self.npc_cur_armor * 0.1) + 5
+      end
       #Poke
     else
 
@@ -270,10 +282,6 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def score
-    self.score += self.level * 100
-
-  end
   def continue
     #Player won
     if self.p_win
@@ -288,6 +296,8 @@ class Game < ActiveRecord::Base
         self.p_win = FALSE
       #Go to scoreboard if all levels defeated
       else
+        self.npc_win = FALSE
+        self.p_win = FALSE
         self.p_score += self.level * 100
         self.over = TRUE
       end
@@ -302,6 +312,8 @@ class Game < ActiveRecord::Base
       self.p_win = FALSE
     #Player Lost Game, go to scoreboard
     else
+      self.npc_win = FALSE
+      self.p_win = FALSE
       self.p_score -= 25
       self.over = TRUE
     end

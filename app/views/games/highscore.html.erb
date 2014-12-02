@@ -24,10 +24,12 @@
         <% @highscores.each do |score| %>
           <tr><td><%= score.p_name %></td>
           <td><%= score.level %></td>
-          <td><%= score.date %></td>
+          <td><%= score.record_timestamps %></td>
           <td><%= score.p_score %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+
+<h2 id="createLink"><%= link_to 'Play Again!', games_index_path %></h2>
 
