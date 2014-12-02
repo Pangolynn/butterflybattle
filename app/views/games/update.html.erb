@@ -47,7 +47,9 @@
   </div>
 </div>
 <div id="attacks">
-       <% if @game.p_win == FALSE && @game.npc_win == FALSE %>
+       <%  if @game.over == TRUE %>
+       <%= link_to 'High Score', games_highscore_path %>
+       <%  elsif @game.p_win == FALSE && @game.npc_win == FALSE %>
        <%= link_to 'Attack', games_update_path(:option => 'Attack') %>
        <%= link_to @game.p_defense, games_update_path(:option => 'Defense') %>
        <%= link_to @game.p_offense, games_update_path(:option => 'Offense') %>
@@ -59,5 +61,6 @@
 </div>
 </div>
 </div>
+
 </body>
 </html>

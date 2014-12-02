@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130175312) do
+ActiveRecord::Schema.define(version: 20141202041631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,17 @@ ActiveRecord::Schema.define(version: 20141130175312) do
     t.string   "npc_file"
     t.boolean  "npc_first"
     t.boolean  "p_first"
+    t.boolean  "over"
+    t.integer  "p_score"
+  end
+
+  create_table "highscores", force: true do |t|
+    t.integer  "p_score"
+    t.string   "p_name"
+    t.integer  "level"
+    t.string   "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "npcs", force: true do |t|

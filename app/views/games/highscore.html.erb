@@ -10,8 +10,24 @@
 <body>
 <%= image_tag("Headline.jpg", :class => 'WebsiteName', :alt => 'Logo') %>
 <!--High Score Table will go here-->
-<table>
-  <tr>
-    High Scores
-  </tr>
-</table>
+
+    <table align="center">
+      <thead>
+        <tr>
+            <th>Name</th>
+            <th>Level</th>
+            <th>Date</th>
+            <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @highscores.each do |score| %>
+          <tr><td><%= score.p_name %></td>
+          <td><%= score.level %></td>
+          <td><%= score.date %></td>
+          <td><%= score.p_score %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+

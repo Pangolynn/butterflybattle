@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
+
   get 'games/index'
   get 'games/update', to: 'games#update'
+  get 'games/highscore', to: 'games#show'
   resources :games
   root 'games#index'
 

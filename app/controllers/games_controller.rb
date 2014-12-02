@@ -5,6 +5,11 @@ class GamesController < ApplicationController
   def new
   end
 
+  def show
+
+    @highscores = Highscore.all
+    render :action => 'highscore'
+  end
 def update
 
   @games = Game.all
@@ -22,6 +27,9 @@ def update
       @game.continue
     else
       @game.continue
+      @highscore = Highscore.new(p_name: @game.p_name, level: @game.level, p_score: @game.p_score)
+      @highscore.save
+
     end
 
   #What attack was pressed

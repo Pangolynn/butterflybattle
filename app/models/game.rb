@@ -2,6 +2,7 @@ class Game < ActiveRecord::Base
 
 #   set default game values
   def init
+    self.p_score = 0
     self.level = 1
     player_stats
     self.p_last_move = 'None'
@@ -269,11 +270,16 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def score
+    self.score += self.level * 100
+
+  end
   def continue
     #Player won
     if self.p_win
       #Go to next level if there is another
       if self.level < 7
+        self.p_score += self.level * 100
         self.level += 1
         player_stats
         self.p_last_move = 'None'
@@ -282,10 +288,12 @@ class Game < ActiveRecord::Base
         self.p_win = FALSE
       #Go to scoreboard if all levels defeated
       else
-        go_to_highscore
+        self.p_score += self.level * 100
+        self.over = TRUE
       end
     #Player Lost Level, add to loss counter retry level
     elsif self.p_loss_counter < 1
+      self.p_score -= 25
       self.p_loss_counter + 1
       player_stats
       self.p_last_move = 'None'
@@ -294,14 +302,12 @@ class Game < ActiveRecord::Base
       self.p_win = FALSE
     #Player Lost Game, go to scoreboard
     else
-      go_to_highscore
+      self.p_score -= 25
+      self.over = TRUE
     end
 
     save!
   end
 
-  def go_to_highscore
-    #put name and level in highscore table
-  end
 
 end

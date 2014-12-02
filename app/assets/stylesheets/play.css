@@ -42,7 +42,7 @@
     margin:0 auto;
     border-radius:5px;
     border-width:5px;
-    border-style:groove;
+    border-style:inset;
     border-color:black;
     display:block;
     background:white;

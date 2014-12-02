@@ -60,3 +60,26 @@ li {
     color:purple;
 
 }
+
+th{
+    padding:50px 50px 10px 50px;
+    text-decoration:underline;
+    color:darkmagenta;
+    font-size:1.5em;
+
+}
+
+td{
+    padding:10px 50px 10px 50px;
+    text-align:center;
+    color:black;
+}
+
+table{
+    margin-top:50px;
+    border:10px inset plum;
+    background-color:whitesmoke;
+    min-height:500px;
+    font-variant:small-caps;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
