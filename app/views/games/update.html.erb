@@ -22,7 +22,9 @@
 <div id="historyBox">
   <div id="history">
     <p><%= @game.npc_name %></p>
+    <% if @game.npc_last_move != 'None' %>
     <p>used <%= @game.npc_last_move %>!</p>
+    <% end %>
     <p id="npc_cur_health">NPC Health <%= @game.npc_cur_health %></p>
     <p id="p_cur_health"> Player Health <%= @game.p_cur_health %></p>
 
@@ -49,6 +51,8 @@
 <div id="attacks">
        <%  if @game.over == TRUE %>
        <%= link_to 'High Score', games_highscore_path %>
+       <% elsif @game.retry == TRUE %>
+       <%= link_to 'Continue', games_update_path(:option => 'Retry') %>
        <%  elsif @game.p_win == FALSE && @game.npc_win == FALSE %>
        <%= link_to 'Attack', games_update_path(:option => 'Attack') %>
        <%= link_to @game.p_defense, games_update_path(:option => 'Defense') %>

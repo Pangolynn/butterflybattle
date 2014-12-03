@@ -3,42 +3,50 @@ class Game < ActiveRecord::Base
 #   set default game values
   def init
     self.p_score = 0
+    self.p_loss_counter = 0
     self.level = 1
     player_stats
     self.p_last_move = 'None'
     self.npc_last_move = 'None'
     self.npc_win = FALSE
     self.p_win = FALSE
+    self.retry = FALSE
+    self.bleed = FALSE
 
-    #The additional stat selected by user
-    case self.p_stat_boost
-      when 'stamina'
-        self.p_max_health += 10
-      when 'defense'
-        self.p_max_armor += 10
-      when 'speed'
-        self.p_max_speed += 10
-      when 'strength'
-        self.p_max_attack += 10
-      else
-        puts "Not a possible Stat selection"
-    end
+
+
     save!
   end
 
   #Set player stats
   def player_stats
     self.p_max_health = 100 + self.level * 10
-    self.p_cur_health = 100 + self.level * 10
     self.p_max_armor = 100 + self.level * 10
-    self.p_cur_armor = 100 + self.level * 10
-    self.p_cur_speed = 100 + self.level * 10
-    self.p_cur_attack = 100 + self.level * 10
+    self.p_max_attack = 100 + self.level * 10
     self.p_max_speed = 100 + self.level * 10
+
+    #The additional stat selected by user
+    case self.p_stat_boost
+      when 'Stamina'
+        self.p_max_health += 10
+      when 'Defense'
+        self.p_max_armor += 10
+      when 'Speed'
+        self.p_max_speed += 10
+      when 'Strength'
+        self.p_max_attack += 10
+      else
+        puts "Not a possible Stat selection"
+    end
+
+    self.p_cur_health = self.p_max_health
+    self.p_cur_armor = self.p_max_armor
+    self.p_cur_attack = self.p_max_attack
+    self.p_cur_speed = self.p_max_speed
     save!
   end
 
-  #Used to access NPC Model Data to update the current NPC display and stats
+  #Used to access NPC Model Data to update the current NPC displayed and stats
   def update_npc(npc_name, npc_file, npc_wild, npc_offense, npc_defense,
                npc_max_health, npc_max_armor, npc_max_attack, npc_max_speed)
     self.npc_max_armor = npc_max_armor + self.level * 10
@@ -67,13 +75,14 @@ class Game < ActiveRecord::Base
 #take player turn, calls all AI helper functions
 #To determine moves and winner
   def taketurn(move_type)
-    #See who goes first
+    #Npc first
     if self.p_cur_speed < self.npc_cur_speed
       self.npc_first = TRUE
       ai_move
       #Check player health
       if self.p_cur_health <= 0
         self.npc_win = TRUE
+        self.retry = TRUE
         self.p_loss_counter +=1
       else
         player_move(move_type)
@@ -83,6 +92,7 @@ class Game < ActiveRecord::Base
           self.p_win = TRUE
         end
       end
+    #Player first
     else
       self.p_first = TRUE
       player_move(move_type)
@@ -92,6 +102,7 @@ class Game < ActiveRecord::Base
         ai_move
         if self.p_cur_health <= 0 && self.p_win != TRUE
           self.npc_win = TRUE
+          self.retry = TRUE
           self.p_loss_counter +=1
         end
       end
@@ -100,7 +111,23 @@ class Game < ActiveRecord::Base
   end
 
   def player_move(move_type)
-    if move_type == 'Attack'
+    #Check possible conditions before move
+    if self.p_renew == TRUE
+      self.npc_cur_health += 10
+      if self.p_cur_health > self.p_max_health
+        self.p_cur_health = self.p_max_health
+      end
+      self.p_renew == FALSE
+    end
+    if self.p_bleed == TRUE
+      self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.075) + 2
+      self.p_bleed == FALSE
+    end
+    #Player lost a move, no attack
+    if self.p_lose_move == TRUE
+      self.p_lose_move == FALSE
+
+    elsif move_type == 'Attack'
     #Attack
     self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.1) - (self.npc_cur_armor * 0.1) + 10
     elsif move_type == 'Defense'
@@ -113,44 +140,66 @@ class Game < ActiveRecord::Base
     save!
   end
 
+
   def p_defense_move
-      if self.p_defense == "Block"
-
+      if self.p_defense == "Renew"
+        self.p_renew = TRUE
+        self.p_cur_health += 15
+        #Make sure they don't go over max health
+        if self.p_cur_health > self.p_max_health
+          self.p_cur_health = self.p_max_health
+        end
       elsif self.p_defense == "Heal"
-
+        self.p_cur_health += 20
+        if self.p_cur_health > self.p_max_health
+          self.p_cur_health = self.p_max_health
+        end
       #Sleep
       else
-
+        self.p_cur_health = (self.p_max_health * 0.1) + 15
+        self.p_lose_turn = TRUE
+        if self.p_cur_health > self.p_max_health
+          self.p_cur_health = self.p_max_health
+        end
       end
   end
 
   #Offensive moves deal more damage when the enemy is below 25% health
   def p_offense_move
+      #ignores some armor
       if self.p_offense == "Pummel"
         if self.npc_cur_health < self.npc_max_health * 0.25
-          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.2) - (self.npc_cur_armor * 0.1) + 10
+          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.15) - (self.npc_cur_armor * 0.05)
         else
-          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.15) - (self.npc_cur_armor * 0.1) + 10
+          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.05) - (self.npc_cur_armor * 0.05)
         end
+       #takes recoil damage
       elsif self.p_offense == "Dive"
         if self.npc_cur_health < self.npc_max_health * 0.25
-          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.25) - (self.npc_cur_armor * 0.1) + 10
-          self.p_cur_health = self.p_cur_health - (self.p_cur_attack * 0.1) - (self.p_cur_armor * 0.1) + 5
+          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.175) - (self.npc_cur_armor * 0.1) + 10
+          self.p_cur_health = self.p_cur_health - (self.p_cur_attack * 0.1) - (self.p_cur_armor * 0.075) + 5
         else
-          self.p_cur_health = self.p_cur_health - (self.p_cur_attack * 0.1) - (self.p_cur_armor * 0.1) + 5
-          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.2) - (self.npc_cur_armor * 0.1) + 10
+          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.1) - (self.npc_cur_armor * 0.1) + 5
+          self.p_cur_health = self.p_cur_health - (self.p_cur_attack * 0.1) - (self.p_cur_armor * 0.075) + 5
         end
-      #Poke
+      #Poke - bleeds enemy
       else
-        self.lose_turn == TRUE
-
-
+        if self.npc_cur_health < self.npc_max_health * 0.25
+          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.175) - (self.npc_cur_armor * 0.1)
+          self.npc_bleed == TRUE
+        else
+          self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.1) - (self.npc_cur_armor * 0.1) + 4
+          self.npc_bleed == TRUE
+        end
       end
   end
 
-  #Wild Moves are more effect when the enemy is above 75% health
+  #Wild Moves are more effective when the enemy is above 75% health
   def p_wild_move
-    if self.p.wild == "Innocence"
+    if self.p_wild == "Innocence"
+      if self.npc_cur_health > self.npc_max_health * 0.75
+
+      end
     elsif self.p_wild == "Dazzle"
     #Whoosh
     else
@@ -160,34 +209,53 @@ class Game < ActiveRecord::Base
   end
 
   def npc_defense_move
-    if self.npc_defense == "Block"
-
+    #Heal over 2 turns
+    if self.npc_defense == "Renew"
+      self.npc_renew = TRUE
+      self.p_cur_health += 15
+      if self.npc_cur_health > self.npc_max_health
+        self.npc_cur_health = self.npc_max_health
+      end
+    #Large heal
     elsif self.npc_defense == "Heal"
-
+      self.npc_cur_health += 20
+      if self.npc_cur_health > self.npc_max_health
+        self.npc_cur_health = self.npc_max_health
+      end
       #Sleep
     else
-
+      self.npc_cur_health = (self.npc_max_health * 0.1) + 15
+      self.npc_lose_turn = TRUE
+      if self.npc_cur_health > self.npc_max_health
+        self.npc_cur_health = self.npc_max_health
+      end
     end
   end
 
   def npc_offense_move
     if self.npc_offense == "Pummel"
       if self.p_cur_health < self.p_max_health * 0.25
-        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.2) - (self.p_cur_armor * 0.1) + 10
+        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.15) - (self.p_cur_armor * 0.05)
       else
-        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.15) - (self.p_cur_armor * 0.1) + 10
+        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.05) - (self.p_cur_armor * 0.05)
       end
     elsif self.npc_offense == "Dive"
       if self.p_cur_health < self.p_max_health * 0.25
-        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.25) - (self.p_cur_armor * 0.1) + 10
-        self.npc_cur_health = self.npc_cur_health - (self.npc_cur_attack * 0.1) - (self.npc_cur_armor * 0.1) + 5
+        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.175) - (self.p_cur_armor * 0.1) + 10
+        self.npc_cur_health = self.npc_cur_health - (self.npc_cur_attack * 0.1) - (self.npc_cur_armor * 0.075) + 5
       else
-        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.2) - (self.p_cur_armor * 0.1) + 10
-        self.npc_cur_health = self.npc_cur_health - (self.npc_cur_attack * 0.1) - (self.npc_cur_armor * 0.1) + 5
+        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.1) - (self.p_cur_armor * 0.1) + 5
+        self.npc_cur_health = self.npc_cur_health - (self.npc_cur_attack * 0.1) - (self.npc_cur_armor * 0.075) + 5
       end
-      #Poke
+    #Poke
     else
-
+      if self.p_cur_health < self.p_max_health * 0.25
+        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.175) - (self.p_cur_armor * 0.1)
+        self.p_bleed == TRUE
+      else
+        self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.1) - (self.p_cur_armor * 0.1) + 4
+        self.p_bleed == TRUE
+      end
     end
   end
 
@@ -201,14 +269,30 @@ class Game < ActiveRecord::Base
   end
 
   def ai_move
-      if self.level < 8  #Level 1 and 2 should have silly AI
+      #Check possible conditions before move
+      if self.npc_renew == TRUE
+        self.npc_cur_health += 10
+        self.npc_renew == FALSE
+        if self.npc_cur_health > self.npc_max_health
+          self.npc_cur_health = self.npc_max_health
+        end
+      end
+      if self.bleed == TRUE
+        self.npc_cur_health = self.npc_cur_health - (self.p_cur_attack * 0.075) + 2
+        self.bleed == FALSE
+      end
+
+      if self.npc_lose_move == TRUE
+        self.npc_lose_move == FALSE
+        self.npc_last_move = "Sleep"
+      elsif self.level < 8  #Level 1 and 2 should have silly AI
         lowai
       elsif self.level < 5  #Level 3-5 have more complicated AI
         mediumai
       else
         hardai    #Level 6 and 7 should have best AI
       end
-    save!
+      save!
   end
 
     #Silly AI
@@ -222,7 +306,7 @@ class Game < ActiveRecord::Base
           - (self.p_cur_armor * 0.1) + 10
         when 1
           self.npc_last_move = self.npc_offense.capitalize
-          # npc_offense_move
+          npc_offense_move
 
         when 2
           self.npc_last_move = self.npc_defense.capitalize
@@ -302,10 +386,11 @@ class Game < ActiveRecord::Base
         self.over = TRUE
       end
     #Player Lost Level, add to loss counter retry level
-    elsif self.p_loss_counter < 1
+    elsif self.p_loss_counter < 2
       self.p_score -= 25
       self.p_loss_counter + 1
       player_stats
+      self.retry = FALSE
       self.p_last_move = 'None'
       self.npc_last_move = 'None'
       self.npc_win = FALSE

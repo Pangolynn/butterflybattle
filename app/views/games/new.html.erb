@@ -47,13 +47,12 @@
   <div id="defensePicker">
      <%= g.radio_button :p_defense, :Heal , options ={:onclick=> "changeToolTip('HealText', '.DefenseToolTip')"}%>
      <%= label_tag(:defense_heal, "Heal") %>
-     <%= g.radio_button :p_defense, :Block , options ={:onclick=> "changeToolTip('BlockText', '.DefenseToolTip')"}%>
-     <%= label_tag(:defense_block, "Block") %>
+     <%= g.radio_button :p_defense, :Block , options ={:onclick=> "changeToolTip('RenewText', '.DefenseToolTip')"}%>
+     <%= label_tag(:defense_block, "Renew") %>
      <%= g.radio_button :p_defense, :Sleep , options ={:onclick=> "changeToolTip('SleepText', '.DefenseToolTip')"}%>
      <%= label_tag(:defense_sleep, "Sleep") %>
      <span class="DefenseToolTip" id="HealText">Heal will allow you to heal your character for a medium amount.</span>
-     <span class="DefenseToolTip" id="BlockText">Block will allow you to block a medium or less attack, and
-      slightly reduce a heavy attack</span>
+     <span class="DefenseToolTip" id="RenewText">Renew will heal you for a large amount over two turns</span>
      <span class="DefenseToolTip" id="SleepText">Sleep will allow you to heal for a large amount, but you
       lose your next turn.</span>
   </div>
@@ -74,7 +73,7 @@
     <span class="OffenseToolTip" id="PummelText">You pummel the enemy with your wings, dealing a medium amount
     of damage.</span>
     <span class="OffenseToolTip" id="PokeText">You poke your enemy in the eye with your antennae
-    dealing a large amount of damage, you lose your next turn to clean off. Ew.</span>
+    dealing a large amount of damage, your opponent bleeds next turn. Ew.</span>
   </div>
   </fieldset>
 

@@ -29,12 +29,20 @@ def update
                     @npc.npc_max_attack, @npc.npc_max_speed)
       @game.continue
     else
+      #get highscore table info
       @game.continue
       @highscore = Highscore.new(p_name: @game.p_name, level: @game.level, p_score: @game.p_score)
       @highscore.save
 
     end
-
+    #Player lost level, reload level
+  elsif params[:option] == 'Retry'
+    level = @game.level
+    @npc = Npc.find_by(level: level)
+    @game.update_npc(@npc.npc_name, @npc.npc_file, @npc.npc_wild, @npc.npc_offense,
+                     @npc.npc_defense, @npc.npc_max_health, @npc.npc_max_armor,
+                     @npc.npc_max_attack, @npc.npc_max_speed)
+    @game.continue
   #What attack was pressed
   elsif params[:option] == 'Attack'
     @game.taketurn('Attack')
