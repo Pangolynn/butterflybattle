@@ -47,7 +47,7 @@
   <div id="defensePicker">
      <%= g.radio_button :p_defense, :Heal , options ={:onclick=> "changeToolTip('HealText', '.DefenseToolTip')"}%>
      <%= label_tag(:defense_heal, "Heal") %>
-     <%= g.radio_button :p_defense, :Block , options ={:onclick=> "changeToolTip('RenewText', '.DefenseToolTip')"}%>
+     <%= g.radio_button :p_defense, :Renew , options ={:onclick=> "changeToolTip('RenewText', '.DefenseToolTip')"}%>
      <%= label_tag(:defense_block, "Renew") %>
      <%= g.radio_button :p_defense, :Sleep , options ={:onclick=> "changeToolTip('SleepText', '.DefenseToolTip')"}%>
      <%= label_tag(:defense_sleep, "Sleep") %>
@@ -87,8 +87,8 @@
     <%= label_tag(:offense_whoosh, "Whoosh") %>
     <%= g.radio_button :p_wild, :Innocence , options ={:onclick=> "changeToolTip('InnocenceText', '.WildToolTip')"}%>
     <%= label_tag(:offense_Innocence, "Innocence") %>
-    <span class="WildToolTip" id="DazzleText">You dazzle the enemy with your beautiful wings, they attack
-    second for the next two turns.</span>
+    <span class="WildToolTip" id="DazzleText">You dazzle the enemy with your beautiful wings, they may only
+    normal attack next turn</span>
     <span class="WildToolTip" id="WhooshText">You fly wildly around your enemy, they may hit themselves
     the next turn.</span>
     <span class="WildToolTip" id="InnocenceText">You sit innocently in front of your enemy, they

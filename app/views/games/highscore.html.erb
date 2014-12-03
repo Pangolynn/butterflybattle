@@ -16,7 +16,6 @@
         <tr>
             <th>Name</th>
             <th>Level</th>
-            <th>Date</th>
             <th>Score</th>
         </tr>
       </thead>
@@ -24,7 +23,6 @@
         <% @highscores.each do |score| %>
           <tr><td><%= score.p_name %></td>
           <td><%= score.level %></td>
-          <td><%= score.record_timestamps %></td>
           <td><%= score.p_score %></td>
           </tr>
         <% end %>

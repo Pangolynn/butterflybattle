@@ -152,7 +152,7 @@ a:visited {
     position:absolute;
     padding-top:5px;
     top:50%;
-    height:250px;
+    height:370px;
     width:260px;
 
 }
@@ -182,3 +182,7 @@ a:visited {
     float:right;
 }
 
+
+.hide{
+    display:none
+}

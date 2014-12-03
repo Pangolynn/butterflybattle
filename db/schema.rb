@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203023230) do
+ActiveRecord::Schema.define(version: 20141203061755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,18 @@ ActiveRecord::Schema.define(version: 20141203023230) do
     t.integer  "p_score"
     t.boolean  "retry"
     t.boolean  "bleed"
+    t.boolean  "npc_renew"
+    t.boolean  "p_renew"
+    t.boolean  "npc_bleed"
+    t.boolean  "p_bleed"
+    t.boolean  "p_lose_turn"
+    t.boolean  "npc_lose_turn"
+    t.boolean  "p_confused"
+    t.boolean  "npc_confused"
+    t.boolean  "p_forget"
+    t.boolean  "npc_forget"
+    t.boolean  "p_sleep"
+    t.boolean  "npc_sleep"
   end
 
   create_table "highscores", force: true do |t|

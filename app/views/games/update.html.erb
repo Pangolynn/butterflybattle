@@ -15,6 +15,11 @@
 
 <%= image_tag("Headline.jpg", :class => 'WebsiteName', :alt => 'Logo') %>
 
+<!--Hidden variables for health bars-->
+<p class = "hide" id = "npc_max_health"><%= @game.npc_max_health %></p>
+<p class = "hide" id = "p_max_health"><%= @game.p_max_health %></p>
+<p class = "hide" id = "p_cur_health"><%= @game.p_cur_health %></p>
+<p class = "hide" id = "npc_cur_health"><%= @game.npc_cur_health %></p>
 <div id = "stageArea">
 <div id="versusBox">
   <b>Level <%= @game.level %></b><br> <%= @game.p_name %> <br>Vs<br><%= @game.npc_name %>
@@ -25,9 +30,12 @@
     <% if @game.npc_last_move != 'None' %>
     <p>used <%= @game.npc_last_move %>!</p>
     <% end %>
-    <p id="npc_cur_health">NPC Health <%= @game.npc_cur_health %></p>
-    <p id="p_cur_health"> Player Health <%= @game.p_cur_health %></p>
-
+    <p>NPC Health <%= @game.npc_cur_health %></p>
+    <p><%= @game.p_name %></p>
+    <% if @game.p_last_move != 'None' %>
+        <p>used <%= @game.p_last_move %>!</p>
+    <% end %>
+    <p> <%= @game.p_name %>'s Health <%= @game.p_cur_health %></p>
   </div>
 </div>
 <div id="container">
