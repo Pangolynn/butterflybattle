@@ -22,7 +22,7 @@ class Game < ActiveRecord::Base
   #Set player stats
   def player_stats
     self.p_max_health = 100 + self.level * 10
-    self.p_max_armor = 100 + self.level * 5
+    self.p_max_armor = 100 + self.level * 1
     self.p_max_attack = 100 + self.level * 10
     self.p_max_speed = 100 + self.level * 10
 
