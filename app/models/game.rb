@@ -284,6 +284,7 @@ class Game < ActiveRecord::Base
         self.npc_cur_health = self.npc_max_health
       end
     end
+    save!
   end
 
   def npc_offense_move
@@ -311,6 +312,7 @@ class Game < ActiveRecord::Base
         self.p_bleed == TRUE
       end
     end
+    save!
   end
 
   def npc_wild_move
@@ -356,6 +358,7 @@ class Game < ActiveRecord::Base
       end
       self.p_cur_health = self.p_cur_health - 6
     end
+    save!
   end
 
   def ai_move
@@ -416,6 +419,12 @@ class Game < ActiveRecord::Base
         when 2
           self.npc_last_move = self.npc_defense.capitalize
           npc_defense_move
+          #dont' want npcs to spam defense unluckily
+          if self.npc_last_move == self.npc_defense
+            self.npc_last_move = 'Attack'
+            self.p_cur_health = self.p_cur_health - (self.npc_cur_attack * 0.1)
+            - (self.p_cur_armor * 0.1) + 10
+          end
 
         when 3
           self.npc_last_move = self.npc_wild.capitalize
@@ -482,7 +491,7 @@ class Game < ActiveRecord::Base
     if self.p_win
       #Go to next level if there is another
       if self.level < 7
-        self.p_score = self.p_score + (self.level * 100) + ((self.p_cur_health/self.p_max_health)* 10)
+        self.p_score = self.p_score + (self.level * 100) + ((self.p_cur_health/self.p_max_health)* 100)
         self.level += 1
         player_stats
         self.p_last_move = 'None'
