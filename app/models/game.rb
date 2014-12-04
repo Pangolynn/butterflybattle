@@ -176,7 +176,7 @@ class Game < ActiveRecord::Base
         end
       #Sleep - heals for a large amount, lose next turn
       else
-        self.p_cur_health = self.p_cur_health + (self.p_max_health * 0.1) + 15
+        self.p_cur_health = self.p_cur_health + (self.p_max_health * 0.1) + 5
         self.p_sleep = TRUE
         if self.p_cur_health > self.p_max_health
           self.p_cur_health = self.p_max_health
@@ -278,7 +278,7 @@ class Game < ActiveRecord::Base
       end
       #Sleep
     else
-      self.npc_cur_health = self.npc_cur_health + (self.npc_max_health * 0.1) + 15
+      self.npc_cur_health = self.npc_cur_health + (self.npc_max_health * 0.1) + 5
       self.npc_sleep = TRUE
       if self.npc_cur_health > self.npc_max_health
         self.npc_cur_health = self.npc_max_health
