@@ -114,7 +114,7 @@ class Game < ActiveRecord::Base
   def player_move(move_type)
     #Check possible conditions before move
     if self.p_renew == TRUE
-      self.p_cur_health += 10
+      self.p_cur_health += 6
       if self.p_cur_health > self.p_max_health
         self.p_cur_health = self.p_max_health
       end
@@ -164,13 +164,13 @@ class Game < ActiveRecord::Base
   def p_defense_move
       if self.p_defense == "Renew"
         self.p_renew = TRUE
-        self.p_cur_health += 15
+        self.p_cur_health += 10
         #Make sure they don't go over max health
         if self.p_cur_health > self.p_max_health
           self.p_cur_health = self.p_max_health
         end
       elsif self.p_defense == "Heal"
-        self.p_cur_health += 20
+        self.p_cur_health += 15
         if self.p_cur_health > self.p_max_health
           self.p_cur_health = self.p_max_health
         end
@@ -266,13 +266,13 @@ class Game < ActiveRecord::Base
     #Heal over 2 turns
     if self.npc_defense == "Renew"
       self.npc_renew = TRUE
-      self.npc_cur_health += 15
+      self.npc_cur_health += 10
       if self.npc_cur_health > self.npc_max_health
         self.npc_cur_health = self.npc_max_health
       end
     #medium heal
     elsif self.npc_defense == "Heal"
-      self.npc_cur_health += 18
+      self.npc_cur_health += 15
       if self.npc_cur_health > self.npc_max_health
         self.npc_cur_health = self.npc_max_health
       end
@@ -361,7 +361,7 @@ class Game < ActiveRecord::Base
   def ai_move
       #Check possible conditions before move
       if self.npc_renew == TRUE
-        self.npc_cur_health += 10
+        self.npc_cur_health += 5
         self.npc_renew == FALSE
         if self.npc_cur_health > self.npc_max_health
           self.npc_cur_health = self.npc_max_health
