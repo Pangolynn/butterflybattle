@@ -22,7 +22,7 @@ class Game < ActiveRecord::Base
   #Set player stats
   def player_stats
     self.p_max_health = 100 + self.level * 10
-    self.p_max_armor = 100 + self.level * 10
+    self.p_max_armor = 100 + self.level * 5
     self.p_max_attack = 100 + self.level * 10
     self.p_max_speed = 100 + self.level * 10
 
@@ -31,7 +31,7 @@ class Game < ActiveRecord::Base
       when 'Stamina'
         self.p_max_health += 10
       when 'Defense'
-        self.p_max_armor += 10
+        self.p_max_armor += 5
       when 'Speed'
         self.p_max_speed += 10
       when 'Strength'
@@ -50,7 +50,7 @@ class Game < ActiveRecord::Base
   #Used to access NPC Model Data to update the current NPC displayed and stats
   def update_npc(npc_name, npc_file, npc_wild, npc_offense, npc_defense,
                npc_max_health, npc_max_armor, npc_max_attack, npc_max_speed)
-    self.npc_max_armor = npc_max_armor + self.level * 10
+    self.npc_max_armor = npc_max_armor + self.level * 5
     self.npc_max_attack = npc_max_attack + self.level * 10
     self.npc_max_health = npc_max_health + self.level * 10
     self.npc_max_speed = npc_max_speed + self.level * 10
