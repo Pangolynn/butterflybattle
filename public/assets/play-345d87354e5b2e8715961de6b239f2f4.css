@@ -1,0 +1,188 @@
+#container{
+    padding-top:10px;
+    display:block;
+    border-radius:5px;
+    border-color:black;
+    border-style:solid;
+    border-width:10px;
+    height:560px;
+    width:700px;
+    margin:0 auto;
+    margin-top:20px;
+    text-align:center;
+    background-color:#C01AFF;
+
+}
+
+#versusBox{
+    position:absolute;
+    padding-top:5px;
+    float:left;
+    top:50%;
+    font-size:1.5em;
+    font-style:italic;
+    display:block;
+    color:mediumpurple;
+    background:black;
+    border-radius:15px;
+    border-style:groove;
+    border-color:mediumpurple;
+    border-width: 10px;
+    height:230px;
+    width:250px;
+    text-align:center;
+}
+
+#detailsBox{
+
+}
+
+#battlefield{
+    text-align:center;
+    margin:0 auto;
+    border-radius:5px;
+    border-width:5px;
+    border-style:inset;
+    border-color:black;
+    display:block;
+    background:white;
+    height:350px;
+    width:635px;
+
+}
+
+#attacks{
+    border-style:double;
+    margin:0 auto;
+    margin-top:10px;
+    background-color:white;
+    display:block;
+    height:150px;
+    width:400px;
+
+
+}
+
+a{
+
+    background-color:black;
+    border-radius:10px;
+    border-color:mediumpurple;
+    position:relative;
+    top:30%;
+    background-size: 100px 100px;
+    height:60px;
+    width:80px;
+    padding:10px;
+    color:mediumpurple;
+    font-size:1em;
+}
+a:link {
+
+    color:mediumpurple;
+    text-decoration:none;
+    background-size: 100px 100px;
+}
+
+
+a:visited {
+    color:mediumpurple;
+    text-decoration:none;
+    background-size: 100px 100px;
+}
+
+#purplePicButterfly{
+    background: url('spritesheet.png') no-repeat -233px -5px; width: 274px; height: 219px;
+}
+
+#redPicButterfly{
+    background: url('spritesheet.png') no-repeat -5px -234px; width: 253px; height: 211px;
+}
+
+#blackPicButterfly{
+    background: url('spritesheet.png') no-repeat -5px -5px; width: 218px; height: 168px;
+}
+
+#phealthbar{
+    width:180px;
+    height:25px;
+    border-radius:3px;
+    border:1px solid #000000;
+    background-color:white;
+    display:block;
+    margin:5px 5px;
+}
+#npchealthbar{
+    display:inline-block;
+    border-radius:3px;
+    margin:5px;
+    float:right;
+    width:180px;
+    height:25px;
+    background-color:white;
+    border:1px solid #000000;
+
+}
+
+#characterfield{
+    float:left;
+    height:300px;
+    width:300px;
+}
+
+#npcfield{
+    float:right;
+    height:300px;
+    width:300px;
+}
+
+#historyBox{
+    right:1%;
+    float:right;
+    display:block;
+    color:mediumpurple;
+    background:black;
+    border-radius:15px;
+    border-style:groove;
+    border-color:mediumpurple;
+    border-width: 10px;
+    text-align:center;
+    font-size:1.5em;
+    font-style:italic;
+    position:absolute;
+    padding-top:5px;
+    top:50%;
+    height:370px;
+    width:260px;
+
+}
+#stageArea{
+    max-height:800px;
+    max-width:2000px;
+}
+#history{
+    position:relative;
+    display:block;
+    vertical-align:middle;
+}
+
+.npcimage{
+    width:300px;
+    min-height:150px;
+    max-height:250px;
+    vertical-align:middle;
+    position:relative;
+    padding-top:20px;
+
+}
+
+#stats{
+    width:500px;
+    height:100px;
+    float:right;
+}
+
+
+.hide{
+    display:none
+}

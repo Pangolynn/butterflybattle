@@ -1,0 +1,439 @@
+/*Samantha Holloway Senior Project Oct 2014*/
+/*Main.css*/
+
+html {
+    font-size:20px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    line-height:2em;
+}
+
+body {
+    background:#946fcf
+}
+
+.WebsiteName {
+    width:400px;
+    height:200px;
+    top:0;
+    margin:0 auto;
+    position:relative;
+    display:block;
+}
+
+h1 {
+    text-align:center;
+    color: purple;
+    font-size:32px;
+    font-style:italic;
+
+}
+
+h2 {
+    text-align:center;
+    color:purple;
+    font-size:25px;
+
+}
+
+p {
+    text-align:center;
+    color: white;
+    font-size:20px;
+
+}
+
+a {
+    text-align:center;
+    color: purple;
+    font-size:20px;
+}
+
+a:visited{
+    color:white;
+}
+
+a:hover{
+    color:black;
+}
+
+li {
+    text-align:center;
+    color:purple;
+
+}
+
+th{
+    padding:50px 50px 10px 50px;
+    text-decoration:underline;
+    color:darkmagenta;
+    font-size:1.5em;
+
+}
+
+td{
+    padding:10px 50px 10px 50px;
+    text-align:center;
+    color:black;
+}
+
+table{
+    margin-top:50px;
+    margin-bottom: 20px;
+    border:10px inset plum;
+    background-color:whitesmoke;
+    min-height:500px;
+    font-variant:small-caps;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+#createLink {
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+
+
+
+/*Samantha Holloway Senior Project Oct 2014*/
+/* creation.css */
+
+h2 {
+    color:white;
+
+}
+
+label {
+    margin-right:3%;
+    color:black;
+    display:inline-block;
+}
+
+fieldset {
+    text-align:center;
+}
+#namefield, #defensePicker, #wildPicker, #offensePicker,
+#colorPicker, #statPicker {
+    margin: auto;
+}
+
+#colorPicker{
+    padding-right: 20px;
+}
+
+
+input {
+    display:inline-block;
+    margin-right:5px;
+
+}
+
+span {
+    display:block;
+    margin: 0 auto;
+}
+
+img {
+    width:150px;
+    height:150px;
+    display:inline-block;
+    vertical-align:top;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+
+.DefenseToolTip, .OffenseToolTip, .WildToolTip {
+    height:250px;
+    width:350px;
+    background-color:papayawhip;
+    display:inline-block;
+    position: relative;
+    vertical-align:top;
+    text-align:center;
+    border-radius:10px;
+    border-style:groove;
+    border-width:5px;
+}
+
+#speed, #stamina, #defense, #offense{
+    display:none;
+}
+#strength{
+    display:inline-block;
+}
+
+
+#RenewText {
+    display:none;
+}
+
+#SleepText {
+    display:none;
+}
+
+#PummelText{
+    display:none;
+}
+
+#PokeText{
+    display:none;
+}
+
+#WhooshText{
+    display:none;
+}
+
+#InnocenceText{
+    display:none;
+}
+
+#purplePicButterfly{
+    background: url('spritesheet.png') no-repeat -233px -5px; width: 274px; height: 219px;
+}
+
+#redPicButterfly{
+    background: url('spritesheet.png') no-repeat -5px -234px; width: 253px; height: 211px;
+}
+
+#blackPicButterfly{
+    background: url('spritesheet.png') no-repeat -5px -5px; width: 218px; height: 168px;
+}
+
+#submit{
+    display:block;
+    margin:0 auto;
+    padding: 10px 15px;
+    background-color: mediumpurple;
+    color:white;
+}
+
+#Backtotop{
+    display:block;
+    margin:0 auto;
+}
+
+#Strength{
+    background: url('statsheet.png') no-repeat -7px -3px; width: 205px; height: 256px;
+}
+
+#Speed{
+    background: url('statsheet.png') no-repeat -8px -330px; width: 273px; height: 209px;
+}
+
+#Stamina{
+    background: url('statsheet.png') no-repeat -302px -42px; width: 175px; height: 165px;
+}
+
+#Defense{
+    background: url('statsheet.png') no-repeat -13px -604px; width: 199px; height: 301px;
+}
+#container{
+    padding-top:10px;
+    display:block;
+    border-radius:5px;
+    border-color:black;
+    border-style:solid;
+    border-width:10px;
+    height:560px;
+    width:700px;
+    margin:0 auto;
+    margin-top:20px;
+    text-align:center;
+    background-color:#C01AFF;
+
+}
+
+#versusBox{
+    position:absolute;
+    padding-top:5px;
+    float:left;
+    top:50%;
+    font-size:1.5em;
+    font-style:italic;
+    display:block;
+    color:mediumpurple;
+    background:black;
+    border-radius:15px;
+    border-style:groove;
+    border-color:mediumpurple;
+    border-width: 10px;
+    height:230px;
+    width:250px;
+    text-align:center;
+}
+
+#detailsBox{
+
+}
+
+#battlefield{
+    text-align:center;
+    margin:0 auto;
+    border-radius:5px;
+    border-width:5px;
+    border-style:inset;
+    border-color:black;
+    display:block;
+    background:white;
+    height:350px;
+    width:635px;
+
+}
+
+#attacks{
+    border-style:double;
+    margin:0 auto;
+    margin-top:10px;
+    background-color:white;
+    display:block;
+    height:150px;
+    width:400px;
+
+
+}
+
+a{
+
+    background-color:black;
+    border-radius:10px;
+    border-color:mediumpurple;
+    position:relative;
+    top:30%;
+    background-size: 100px 100px;
+    height:60px;
+    width:80px;
+    padding:10px;
+    color:mediumpurple;
+    font-size:1em;
+}
+a:link {
+
+    color:mediumpurple;
+    text-decoration:none;
+    background-size: 100px 100px;
+}
+
+
+a:visited {
+    color:mediumpurple;
+    text-decoration:none;
+    background-size: 100px 100px;
+}
+
+#purplePicButterfly{
+    background: url('spritesheet.png') no-repeat -233px -5px; width: 274px; height: 219px;
+}
+
+#redPicButterfly{
+    background: url('spritesheet.png') no-repeat -5px -234px; width: 253px; height: 211px;
+}
+
+#blackPicButterfly{
+    background: url('spritesheet.png') no-repeat -5px -5px; width: 218px; height: 168px;
+}
+
+#phealthbar{
+    width:180px;
+    height:25px;
+    border-radius:3px;
+    border:1px solid #000000;
+    background-color:white;
+    display:block;
+    margin:5px 5px;
+}
+#npchealthbar{
+    display:inline-block;
+    border-radius:3px;
+    margin:5px;
+    float:right;
+    width:180px;
+    height:25px;
+    background-color:white;
+    border:1px solid #000000;
+
+}
+
+#characterfield{
+    float:left;
+    height:300px;
+    width:300px;
+}
+
+#npcfield{
+    float:right;
+    height:300px;
+    width:300px;
+}
+
+#historyBox{
+    right:1%;
+    float:right;
+    display:block;
+    color:mediumpurple;
+    background:black;
+    border-radius:15px;
+    border-style:groove;
+    border-color:mediumpurple;
+    border-width: 10px;
+    text-align:center;
+    font-size:1.5em;
+    font-style:italic;
+    position:absolute;
+    padding-top:5px;
+    top:50%;
+    height:370px;
+    width:260px;
+
+}
+#stageArea{
+    max-height:800px;
+    max-width:2000px;
+}
+#history{
+    position:relative;
+    display:block;
+    vertical-align:middle;
+}
+
+.npcimage{
+    width:300px;
+    min-height:150px;
+    max-height:250px;
+    vertical-align:middle;
+    position:relative;
+    padding-top:20px;
+
+}
+
+#stats{
+    width:500px;
+    height:100px;
+    float:right;
+}
+
+
+.hide{
+    display:none
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+
+
+
+ */
+

@@ -1,0 +1,96 @@
+/*Samantha Holloway Senior Project Oct 2014*/
+/*Main.css*/
+
+html {
+    font-size:20px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    line-height:2em;
+}
+
+body {
+    background:#946fcf
+}
+
+.WebsiteName {
+    width:400px;
+    height:200px;
+    top:0;
+    margin:0 auto;
+    position:relative;
+    display:block;
+}
+
+h1 {
+    text-align:center;
+    color: purple;
+    font-size:32px;
+    font-style:italic;
+
+}
+
+h2 {
+    text-align:center;
+    color:purple;
+    font-size:25px;
+
+}
+
+p {
+    text-align:center;
+    color: white;
+    font-size:20px;
+
+}
+
+a {
+    text-align:center;
+    color: purple;
+    font-size:20px;
+}
+
+a:visited{
+    color:white;
+}
+
+a:hover{
+    color:black;
+}
+
+li {
+    text-align:center;
+    color:purple;
+
+}
+
+th{
+    padding:50px 50px 10px 50px;
+    text-decoration:underline;
+    color:darkmagenta;
+    font-size:1.5em;
+
+}
+
+td{
+    padding:10px 50px 10px 50px;
+    text-align:center;
+    color:black;
+}
+
+table{
+    margin-top:50px;
+    margin-bottom: 20px;
+    border:10px inset plum;
+    background-color:whitesmoke;
+    min-height:500px;
+    font-variant:small-caps;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+#createLink {
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+
+
+
